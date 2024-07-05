@@ -73,5 +73,83 @@ namespace RepairShop.Infrastructure.Database.Queries
             set { _Document_Update = value; }
         }
 
+		private static string _Person_Add;
+        public static string Person_Add
+        {
+            get
+            {
+                if (_Person_Add is null)
+                    _Person_Add = GetQuery();
+
+                return _Person_Add;
+            }
+            set { _Person_Add = value; }
+        }
+
+		private static string _Person_ByBirthDate;
+        public static string Person_ByBirthDate
+        {
+            get
+            {
+                if (_Person_ByBirthDate is null)
+                    _Person_ByBirthDate = GetQuery();
+
+                return _Person_ByBirthDate;
+            }
+            set { _Person_ByBirthDate = value; }
+        }
+
+		private static string _Person_ByDocument;
+        public static string Person_ByDocument
+        {
+            get
+            {
+                if (_Person_ByDocument is null)
+                    _Person_ByDocument = GetQuery();
+
+                return _Person_ByDocument;
+            }
+            set { _Person_ByDocument = value; }
+        }
+
+		private static string _Person_ById;
+        public static string Person_ById
+        {
+            get
+            {
+                if (_Person_ById is null)
+                    _Person_ById = GetQuery();
+
+                return _Person_ById;
+            }
+            set { _Person_ById = value; }
+        }
+
+		private static string _Person_ByName;
+        public static string Person_ByName
+        {
+            get
+            {
+                if (_Person_ByName is null)
+                    _Person_ByName = GetQuery();
+
+                return _Person_ByName;
+            }
+            set { _Person_ByName = value; }
+        }
+
+		private static string _Person_BySurname;
+        public static string Person_BySurname
+        {
+            get
+            {
+                if (_Person_BySurname is null)
+                    _Person_BySurname = GetQuery();
+
+                return _Person_BySurname;
+            }
+            set { _Person_BySurname = value; }
+        }
+
     }
 }

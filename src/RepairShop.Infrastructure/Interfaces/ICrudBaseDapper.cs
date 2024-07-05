@@ -12,10 +12,10 @@ namespace RepairShop.Infrastructure.Interfaces
     {
 
         IEnumerable<T> ExecuteScriptWithTransactionList<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text);
-        IEnumerable<T> ExecuteScriptWithoutransactionList<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text);
+        IEnumerable<T> ExecuteScriptWithoutTransactionList<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text);
 
         T ExecuteScriptWithTransactionSingle<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text);
-        T ExecuteScriptWithoutransactionSingle<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text);
+        T ExecuteScriptWithoutTransactionSingle<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text);
 
         void ExecuteScriptWithTransaction(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text);
     }

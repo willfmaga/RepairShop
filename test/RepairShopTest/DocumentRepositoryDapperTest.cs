@@ -3,16 +3,15 @@ using RepairShop.Infrastructure.Repositories;
 
 namespace RepairShopTest
 {
-    public class DocumentoRepositoryDapper
+    public class DocumentRepositoryDapperTest
     {
-        private string _connectionString;
         private DocumentRepositoryDapper _repo;
 
         [SetUp]
         public void Setup()
         {
-            _connectionString = UtilForTest.connectionString;
-            _repo = new DocumentRepositoryDapper(_connectionString);
+           
+            _repo = new DocumentRepositoryDapper(UtilForTest.connectionString);
         }
 
         [Test]

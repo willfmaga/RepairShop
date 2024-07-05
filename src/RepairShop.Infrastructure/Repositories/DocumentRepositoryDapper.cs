@@ -59,7 +59,7 @@ namespace RepairShop.Infrastructure.Repositories
 
             param.Add("@Id", id, DbType.Int64);
 
-            return ExecuteScriptWithoutransactionSingle<Document>(script, param);
+            return ExecuteScriptWithoutTransactionSingle<Document>(script, param);
         }
         public Document GetByValue(string value)
         {
@@ -69,7 +69,7 @@ namespace RepairShop.Infrastructure.Repositories
 
             param.Add("@Value", value, DbType.String, size: 14);
 
-            return ExecuteScriptWithoutransactionSingle<Document>(script, param);
+            return ExecuteScriptWithoutTransactionSingle<Document>(script, param);
 
             
         }

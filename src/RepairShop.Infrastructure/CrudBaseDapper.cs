@@ -47,7 +47,7 @@ namespace RepairShop.Infrastructure
             }
         }
 
-        public IEnumerable<T> ExecuteScriptWithoutransactionList<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text)
+        public IEnumerable<T> ExecuteScriptWithoutTransactionList<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text)
         {
             try
             {
@@ -86,7 +86,7 @@ namespace RepairShop.Infrastructure
             }
         }
 
-        public T ExecuteScriptWithoutransactionSingle<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text)
+        public T ExecuteScriptWithoutTransactionSingle<T>(string commandText, DynamicParameters parameters, CommandType cmdType = CommandType.Text)
         {
             try
             {

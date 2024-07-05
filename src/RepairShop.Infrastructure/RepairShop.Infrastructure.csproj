@@ -11,11 +11,21 @@
     <None Remove="Database\Queries\Document_ById.sql" />
     <None Remove="Database\Queries\Document_ByValue.sql" />
     <None Remove="Database\Queries\Document_Update.sql" />
-    <None Remove="Database\Queries\Person_Add - Copy.sql" />
+    <None Remove="Database\Queries\Person_Add.sql" />
+    <None Remove="Database\Queries\Person_ByBirthDate.sql" />
+    <None Remove="Database\Queries\Person_ByDocument.sql" />
+    <None Remove="Database\Queries\Person_ById.sql" />
+    <None Remove="Database\Queries\Person_ByName.sql" />
+    <None Remove="Database\Queries\Person_BySurname.sql" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="Database\Queries\Person_Add - Copy.sql" />
+    <EmbeddedResource Include="Database\Queries\Person_ById.sql" />
+    <EmbeddedResource Include="Database\Queries\Person_ByDocument.sql" />
+    <EmbeddedResource Include="Database\Queries\Person_ByBirthDate.sql" />
+    <EmbeddedResource Include="Database\Queries\Person_BySurname.sql" />
+    <EmbeddedResource Include="Database\Queries\Person_ByName.sql" />
+    <EmbeddedResource Include="Database\Queries\Person_Add.sql" />
     <EmbeddedResource Include="Database\Queries\Document_ById.sql" />
     <EmbeddedResource Include="Database\Queries\Document_Update.sql" />
     <EmbeddedResource Include="Database\Queries\Document_ByValue.sql" />

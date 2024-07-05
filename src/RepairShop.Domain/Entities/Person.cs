@@ -14,7 +14,7 @@ namespace RepairShop.Domain.Entities
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime BirthDate { get; set; }
-        public Document Document { get; set; }
+        public Int64 DocumentId { get; set; }
 
         public PersonType Type { get; set; }
 

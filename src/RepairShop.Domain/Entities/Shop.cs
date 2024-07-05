@@ -12,9 +12,8 @@ namespace RepairShop.Domain.Entities
         public string Name { get; set; }
         public string Description { get; set; }
         public string Address { get; set; }
-        public string Document { get; set; }
-        public DocumentType Type { get; set; }
-
+        public Int64 DocumentId { get; set; }
+        
         public string Phone {  get; set; }
     }
 

@@ -1,0 +1,66 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Numerics;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace RepairShop.Domain.Entities
+{
+    public class Vehicle
+    {
+        Int64 Id { get; set; }
+        string Plate { get; set; }
+        string Name { get; set; }
+
+        VehicleType Type { get; set; }
+
+        VehicleBrand Brand { get; set; }
+        public string Model { get; set; }
+
+        public VehicleColor Color { get; set; }
+
+        public Int16 ManufacturingYear { get; set; }
+        public Int16 Year { get; set; }
+
+    }
+
+    public enum VehicleType
+    {
+        none = 0,
+        [Display(Name = "Moto")]
+        Bike = 1,
+        [Display(Name = "Carro")]
+        Car = 2
+    }
+
+    public enum VehicleBrand
+    {
+        none = 0,
+        [Display(Name = "Honda")]
+        Honda = 1,
+        [Display(Name = "Harley Davidson")]
+        HarleyDavidson = 2
+    }
+
+    public enum VehicleColor
+    {
+        none = 0,
+        [Display(Name = "Vermelha")]
+        Red = 1,
+        [Display(Name = "Verde")]
+        Green = 2,
+        [Display(Name = "Preta")]
+        Black = 3,
+        [Display(Name = "Azul")]
+        Blue = 4,
+        [Display(Name = "Amarela")]
+        Yellow = 5,
+        White = 6,
+        [Display(Name = "Cinza")]
+        Gray = 7,
+        [Display(Name = "Roxa")]
+        Purple = 8
+    }
+}

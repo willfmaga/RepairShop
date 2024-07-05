@@ -1,0 +1,61 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Database\Queries\Document_Add.sql" />
+    <None Remove="Database\Queries\Document_ById.sql" />
+    <None Remove="Database\Queries\Document_ByValue.sql" />
+    <None Remove="Database\Queries\Document_Update.sql" />
+    <None Remove="Database\Queries\Person_Add - Copy.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <EmbeddedResource Include="Database\Queries\Person_Add - Copy.sql" />
+    <EmbeddedResource Include="Database\Queries\Document_ById.sql" />
+    <EmbeddedResource Include="Database\Queries\Document_Update.sql" />
+    <EmbeddedResource Include="Database\Queries\Document_ByValue.sql" />
+    <EmbeddedResource Include="Database\Queries\Document_Add.sql" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Database\Queries\AllQueries.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AllQueries.tt</DependentUpon>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Dapper" Version="2.1.35" />
+    <PackageReference Include="MySql.Data" Version="9.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\RepairShop.Domain\RepairShop.Domain.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="Database\Queries\AllQueries.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>AllQueries.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Service Include="{508349b6-6b84-4df5-91f0-309beebad82d}" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Database\Queries\AllQueries.cs">
+      <DesignTime>True</DesignTime>
+      <AutoGen>True</AutoGen>
+      <DependentUpon>AllQueries.tt</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
+</Project>

@@ -10,13 +10,13 @@ namespace RepairShop.Domain.Interfaces.Repositories
     public interface IPersonRepository
     {
         public Person Add(Person Person);
-        public Person Update(Person Person);
+        public void Update(Person Person);
         public Person Delete(Person Person);
-        public Person Get(Int64 id);
+        public Person GetById(Int64 id);
         public IEnumerable<Person> GetByName(string name);
         public IEnumerable<Person> GetBySurname(string surname);
 
         public IEnumerable<Person> GetByBirthDay(DateTime birthdate);
-        public IEnumerable<Person> GetByDocument(string documentValue);
+        public Person GetByDocument(string documentValue);
     }
 }

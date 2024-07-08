@@ -23,7 +23,7 @@ namespace RepairShop.Infrastructure.Repositories
             var param = new DynamicParameters();
 
 
-            param.Add("@Id", person.Id, DbType.Int32);
+            param.Add("@Id", person.Id, DbType.Int64);
             param.Add("@Name", person.Name, DbType.String, size: 50);
             param.Add("@Surname", person.Surname, DbType.String, size: 100);
             param.Add("@BirthDate", person.BirthDate, DbType.Date);
@@ -41,7 +41,7 @@ namespace RepairShop.Infrastructure.Repositories
             throw new NotImplementedException();
         }
 
-        public Person Get(Int64 id)
+        public Person GetById(Int64 id)
         {
             string script = AllQueries.Person_ById;
             var param = new DynamicParameters();
@@ -63,7 +63,7 @@ namespace RepairShop.Infrastructure.Repositories
             return ExecuteScriptWithoutTransactionList<Person>(script, param);
         }
 
-        public IEnumerable<Person> GetByDocument(string documentValue)
+        public Person GetByDocument(string documentValue)
         {
             string script = AllQueries.Person_ByDocument;
             var param = new DynamicParameters();
@@ -71,7 +71,7 @@ namespace RepairShop.Infrastructure.Repositories
 
             param.Add("@DocumentValue", documentValue, DbType.String, size: 14);
 
-            return ExecuteScriptWithoutTransactionList<Person>(script, param);
+            return ExecuteScriptWithoutTransactionSingle<Person>(script, param);
         }
 
         public IEnumerable<Person> GetByName(string name)
@@ -96,9 +96,22 @@ namespace RepairShop.Infrastructure.Repositories
             return ExecuteScriptWithoutTransactionList<Person>(script, param);
         }
 
-        public Person Update(Person Person)
+        public void Update(Person person)
         {
-            throw new NotImplementedException();
+            string script = AllQueries.Person_Update;
+            var param = new DynamicParameters();
+
+
+            param.Add("@Id", person.Id, DbType.Int64);
+
+            param.Add("@Name", person.Name, DbType.String, size: 50);
+            param.Add("@Surname", person.Surname, DbType.String, size: 100);
+            param.Add("@BirthDate", person.BirthDate, DbType.Date);
+            param.Add("@Type", person.Type, DbType.Int16);
+            param.Add("@DocumentId", person.Type, DbType.Int64);
+            param.Add("@Active", person.Active, DbType.Boolean);
+
+            ExecuteScriptWithTransaction(script, param);
         }
     }
 }

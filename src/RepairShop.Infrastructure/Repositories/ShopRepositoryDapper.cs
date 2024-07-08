@@ -19,13 +19,13 @@ namespace RepairShop.Infrastructure.Repositories
 
         public Shop Add(Shop shop)
         {
-            string script = AllQueries.Person_Add;
+            string script = AllQueries.Shop_Add;
             var param = new DynamicParameters();
 
 
-            param.Add("@Id", shop.Id, DbType.Int32);
-            param.Add("@Name", shop.Name, DbType.String, size: 50);
-            param.Add("@Description", shop.Description, DbType.String, size: 250);
+            param.Add("@Id", shop.Id, DbType.Int64);
+            param.Add("@Name", shop.Name, DbType.String, size: 100);
+            param.Add("@Description", shop.Description, DbType.String, size: 500);
             param.Add("@Address", shop.Address, DbType.String, size: 500);
             param.Add("@DocumentId", shop.DocumentId, DbType.Int16);
             param.Add("@Phone", shop.Phone, DbType.String, size:15);
@@ -36,84 +36,35 @@ namespace RepairShop.Infrastructure.Repositories
             return shop;
         }
 
-        public Person Delete(Person Person)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Person Get(Int64 id)
-        {
-            string script = AllQueries.Person_ById;
-            var param = new DynamicParameters();
-
-
-            param.Add("@Id", id, DbType.Int64);
-
-            return ExecuteScriptWithoutTransactionSingle<Person>(script, param);
-        }
-
         public IEnumerable<Shop> GetAll()
         {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Person> GetByBirthDay(DateTime birthdate)
-        {
-            string script = AllQueries.Person_ByBirthDate;
+            string script = AllQueries.Shop_GetAll;
             var param = new DynamicParameters();
 
 
-            param.Add("@BirthDate", birthdate, DbType.Date);
-
-            return ExecuteScriptWithoutTransactionList<Person>(script, param);
+            return ExecuteScriptWithoutTransactionList<Shop>(script, param);
         }
 
-        public IEnumerable<Person> GetByDocument(string documentValue)
+        public IEnumerable<Shop> GetByDocument(string documentValue)
         {
-            string script = AllQueries.Person_ByDocument;
+            string script = AllQueries.Shop_ByDocument;
             var param = new DynamicParameters();
 
 
             param.Add("@DocumentValue", documentValue, DbType.String, size: 14);
 
-            return ExecuteScriptWithoutTransactionList<Person>(script, param);
+            return ExecuteScriptWithoutTransactionList<Shop>(script, param);
         }
 
-        public IEnumerable<Person> GetByName(string name)
+        public IEnumerable<Shop> GetByName(string name)
         {
-            string script = AllQueries.Person_ByName;
+            string script = AllQueries.Shop_ByName;
             var param = new DynamicParameters();
 
 
-            param.Add("@Name", name, DbType.String, size: 50);
+            param.Add("@Name", name, DbType.String, size: 100);
 
-            return ExecuteScriptWithoutTransactionList<Person>(script, param);
-        }
-
-        public IEnumerable<Person> GetBySurname(string surname)
-        {
-            string script = AllQueries.Person_BySurname;
-            var param = new DynamicParameters();
-
-
-            param.Add("@Surname", surname, DbType.String, size: 100);
-
-            return ExecuteScriptWithoutTransactionList<Person>(script, param);
-        }
-
-        public IEnumerable<Shop> GetName(string name)
-        {
-            throw new NotImplementedException();
-        }
-
-        public Person Update(Person Person)
-        {
-            throw new NotImplementedException();
-        }
-
-        IEnumerable<Shop> IShopRepository.GetByDocument(string documentValue)
-        {
-            throw new NotImplementedException();
+            return ExecuteScriptWithoutTransactionList<Shop>(script, param);
         }
     }
 }

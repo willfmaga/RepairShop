@@ -9,10 +9,10 @@ namespace RepairShop.Domain.Entities
     public class Document
     {
         public int Id { get; set; }
-        public DocumentType Type { get; set; }
+        public DocumentType? Type { get; set; }
         public string Value { get; set; }
 
-        public bool Active { get; set; }
+        public bool? Active { get; set; }
     }
 
     public enum DocumentType

@@ -1,4 +1,4 @@
 UPDATE Document 
-   SET   Type = @Type,
-	   Active = @Active
+   SET Active = IFNULL(@Active, Active),
+         Type = IFNULL(@Type, Type)
  WHERE Id = @Id

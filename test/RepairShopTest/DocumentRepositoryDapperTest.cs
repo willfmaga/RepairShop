@@ -52,7 +52,10 @@ namespace RepairShopTest
         public void UpdateWhenObjectExists()
         {
             //arrange 
-            var document = new Document { Id = 1, Type = DocumentType.CNPJ, Active = false };
+            var document = new Document { Id = 1, 
+                                        Type = DocumentType.CNPJ, 
+                                      Active = false 
+                                        };
             
             //act 
             _repo.Update(document);

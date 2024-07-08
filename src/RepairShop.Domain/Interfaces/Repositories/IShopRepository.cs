@@ -11,10 +11,10 @@ namespace RepairShop.Domain.Interfaces.Repositories
     {
         public IEnumerable<Shop> GetAll();
 
-        public IEnumerable<Shop> GetName(string name);
+        public IEnumerable<Shop> GetByName(string name);
 
         public IEnumerable<Shop> GetByDocument(string documentValue);
 
-
+        public Shop Add(Shop shop);
     }
 }

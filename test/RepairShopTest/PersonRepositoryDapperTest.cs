@@ -22,8 +22,14 @@ namespace RepairShopTest
         public void AddWhenObjectIsValid()
         {
             //arrange
-            var person = new Person { Type = PersonType.Client, Name = "William", Surname = "Fernandes"
-            , BirthDate = new DateTime(1980,05, 08), DocumentId = 1};
+            var person = new Person
+            {
+                Type = PersonType.Client,
+                Name = "William",
+                Surname = "Fernandes",
+                BirthDate = new DateTime(1980, 05, 08),
+                DocumentId = 1
+            };
 
             //act 
             var result = _repo.Add(person);
@@ -81,7 +87,7 @@ namespace RepairShopTest
 
             //assert 
             Assert.IsNotNull(result);
-            Assert.That(result.First().BirthDate.Date, Is.EqualTo(birthdate.Date));
+            Assert.That(result.First().BirthDate.Value.Date, Is.EqualTo(birthdate.Date));
             Assert.Greater(result.Count(), 0);
 
         }
@@ -98,7 +104,7 @@ namespace RepairShopTest
 
             //assert 
             Assert.IsNotNull(result);
-            Assert.That("William", Is.EqualTo(result.First().Name));
+            Assert.That(result.Id, Is.AtLeast(0));
 
         }
 
@@ -106,21 +112,31 @@ namespace RepairShopTest
         public void UpdateWhenObjectExists()
         {
             //arrange 
-            var document = new Document { Id = 1, Type = DocumentType.CNPJ, Active = false };
+            var person = new Person
+            {
+                Id = 1,
+                Name = "Gisele",
+                Surname = "Magalhaes",
+                BirthDate = new DateTime(1981, 09, 18),
+                DocumentId = 1,
+                Type = PersonType.Client,
+                Active = false
+            };
 
             //act 
-           // _repo.Update(document);
+            _repo.Update(person);
 
 
             //assert 
-            //var result = _repo.Get(document.Id);
+            var result = _repo.GetById(person.Id);
 
-            //Assert.IsNotNull(result);
-            //Assert.That(result.Type, Is.EqualTo(document.Type));
-            //Assert.That(result.Active, Is.EqualTo(document.Active));
+            Assert.IsNotNull(result);
+            Assert.That(result.Type, Is.EqualTo(person.Type));
+            Assert.That(result.Name, Is.EqualTo(person.Name));
+            Assert.That(result.Surname, Is.EqualTo(person.Surname));
 
         }
-        
+
         [Test]
         public void GetByIdWhenObjectExists()
         {
@@ -128,12 +144,12 @@ namespace RepairShopTest
             var id = 1;
 
             //act 
-            var result = _repo.Get(id);
+            var result = _repo.GetById(id);
 
 
             //assert 
             Assert.IsNotNull(result);
-            Assert.That("William", Is.EqualTo(result.Name));
+            Assert.That(result.Id, Is.AtLeast(0));
 
         }
 

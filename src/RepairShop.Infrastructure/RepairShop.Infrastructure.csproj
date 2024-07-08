@@ -17,9 +17,19 @@
     <None Remove="Database\Queries\Person_ById.sql" />
     <None Remove="Database\Queries\Person_ByName.sql" />
     <None Remove="Database\Queries\Person_BySurname.sql" />
+    <None Remove="Database\Queries\Person_Update.sql" />
+    <None Remove="Database\Queries\Shop_Add.sql" />
+    <None Remove="Database\Queries\Shop_ByDocument.sql" />
+    <None Remove="Database\Queries\Shop_ByName.sql" />
+    <None Remove="Database\Queries\Shop_GetAll.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Database\Queries\Shop_ByDocument.sql" />
+    <EmbeddedResource Include="Database\Queries\Shop_ByName.sql" />
+    <EmbeddedResource Include="Database\Queries\Person_Update.sql" />
+    <EmbeddedResource Include="Database\Queries\Shop_GetAll.sql" />
+    <EmbeddedResource Include="Database\Queries\Shop_Add.sql" />
     <EmbeddedResource Include="Database\Queries\Person_ById.sql" />
     <EmbeddedResource Include="Database\Queries\Person_ByDocument.sql" />
     <EmbeddedResource Include="Database\Queries\Person_ByBirthDate.sql" />

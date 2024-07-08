@@ -151,5 +151,70 @@ namespace RepairShop.Infrastructure.Database.Queries
             set { _Person_BySurname = value; }
         }
 
+		private static string _Person_Update;
+        public static string Person_Update
+        {
+            get
+            {
+                if (_Person_Update is null)
+                    _Person_Update = GetQuery();
+
+                return _Person_Update;
+            }
+            set { _Person_Update = value; }
+        }
+
+		private static string _Shop_Add;
+        public static string Shop_Add
+        {
+            get
+            {
+                if (_Shop_Add is null)
+                    _Shop_Add = GetQuery();
+
+                return _Shop_Add;
+            }
+            set { _Shop_Add = value; }
+        }
+
+		private static string _Shop_ByDocument;
+        public static string Shop_ByDocument
+        {
+            get
+            {
+                if (_Shop_ByDocument is null)
+                    _Shop_ByDocument = GetQuery();
+
+                return _Shop_ByDocument;
+            }
+            set { _Shop_ByDocument = value; }
+        }
+
+		private static string _Shop_ByName;
+        public static string Shop_ByName
+        {
+            get
+            {
+                if (_Shop_ByName is null)
+                    _Shop_ByName = GetQuery();
+
+                return _Shop_ByName;
+            }
+            set { _Shop_ByName = value; }
+        }
+
+		private static string _Shop_GetAll;
+        public static string Shop_GetAll
+        {
+            get
+            {
+                if (_Shop_GetAll is null)
+                    _Shop_GetAll = GetQuery();
+
+                return _Shop_GetAll;
+            }
+            set { _Shop_GetAll = value; }
+        }
+
     }
 }

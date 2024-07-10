@@ -1,21 +1,21 @@
 INSERT INTO Vehicle(
             Plate,
             Name,
-            Type, 
-            Brand, 
+            TypeId, 
+            BrandId, 
             Model,
-            Color,
-            ManufactoringYear,
+            ColorId,
+            ManufacturingYear,
             Year, 
             Active)
-     VALUES (@Name, 
+     VALUES ( 
              @Plate, 
              @Name, 
-             @Type, 
-             @Brand, 
+             @TypeId, 
+             @BrandId, 
              @Model,
-             @Color, 
-             @ManufactoringYear, 
+             @ColorId, 
+             @ManufacturingYear, 
              @Year, 
              @Active);
 

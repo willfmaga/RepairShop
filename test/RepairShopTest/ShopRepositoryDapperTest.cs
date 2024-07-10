@@ -11,11 +11,14 @@ namespace RepairShopTest
     public class ShopRepositoryDapperTest
     {
         private ShopRepositoryDapper _repo;
+        private object _name;
 
         [SetUp]
         public void Setup()
         {
             _repo = new ShopRepositoryDapper(UtilForTest.connectionString);
+            _name = "William Shop";
+
         }
 
         [Test]
@@ -37,7 +40,7 @@ namespace RepairShopTest
 
             //assert 
             Assert.IsNotNull(result);
-            Assert.That(result.Id, Is.AtLeast(0));
+            Assert.That(result.Id, Is.AtLeast(1));
 
         }
 
@@ -75,7 +78,7 @@ namespace RepairShopTest
 
         }
 
-       
+
         [Test]
         public void GetByDocumentWhenObjectExists()
         {
@@ -96,18 +99,28 @@ namespace RepairShopTest
         public void UpdateWhenObjectExists()
         {
             //arrange 
-            var document = new Document { Id = 1, TypeId = DocumentType.CNPJ, Active = false };
+            var shop = new Shop
+            {
+                Id = 1,
+                Name = "Gisele Repair Shop for Bikes",
+                Description = "Repair Bike Shop for ladies and their bikes",
+                Address = "Pedro Lessa, 1509 Street Embare Santos - SP CEP 11040000",
+                DocumentId = 1,
+                Phone = "5513911111122",
+                Active = false
+            };
 
             //act 
-            // _repo.Update(document);
+            _repo.Update(shop);
 
 
             //assert 
-            //var result = _repo.Get(document.Id);
+            var result = _repo.GetById(shop.Id);
 
-            //Assert.IsNotNull(result);
-            //Assert.That(result.Type, Is.EqualTo(document.Type));
-            //Assert.That(result.Active, Is.EqualTo(document.Active));
+            Assert.IsNotNull(result);
+            Assert.That(result.Id , Is.EqualTo(shop.Id));
+            Assert.That(result.Name, Is.EqualTo(shop.Name));
+            Assert.That(result.Address , Is.EqualTo(shop.Address));
 
         }
 
@@ -118,12 +131,12 @@ namespace RepairShopTest
             var id = 1;
 
             //act 
-            //var result = _repo.Get(id);
+            var result = _repo.GetById(id);
 
 
-            ////assert 
-            //Assert.IsNotNull(result);
-            //Assert.That("William", Is.EqualTo(result.Name));
+            //assert 
+            Assert.IsNotNull(result);
+            Assert.That(result.Name, Is.EqualTo(_name));
 
         }
 

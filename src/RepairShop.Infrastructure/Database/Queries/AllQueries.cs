@@ -190,6 +190,19 @@ namespace RepairShop.Infrastructure.Database.Queries
             set { _Shop_ByDocument = value; }
         }
 
+		private static string _Shop_ById;
+        public static string Shop_ById
+        {
+            get
+            {
+                if (_Shop_ById is null)
+                    _Shop_ById = GetQuery();
+
+                return _Shop_ById;
+            }
+            set { _Shop_ById = value; }
+        }
+
 		private static string _Shop_ByName;
         public static string Shop_ByName
         {
@@ -216,6 +229,19 @@ namespace RepairShop.Infrastructure.Database.Queries
             set { _Shop_GetAll = value; }
         }
 
+		private static string _Shop_Update;
+        public static string Shop_Update
+        {
+            get
+            {
+                if (_Shop_Update is null)
+                    _Shop_Update = GetQuery();
+
+                return _Shop_Update;
+            }
+            set { _Shop_Update = value; }
+        }
+
 		private static string _Vehicle_Add;
         public static string Vehicle_Add
         {
@@ -227,6 +253,58 @@ namespace RepairShop.Infrastructure.Database.Queries
                 return _Vehicle_Add;
             }
             set { _Vehicle_Add = value; }
+        }
+
+		private static string _Vehicle_GetById;
+        public static string Vehicle_GetById
+        {
+            get
+            {
+                if (_Vehicle_GetById is null)
+                    _Vehicle_GetById = GetQuery();
+
+                return _Vehicle_GetById;
+            }
+            set { _Vehicle_GetById = value; }
+        }
+
+		private static string _Vehicle_GetByPlate;
+        public static string Vehicle_GetByPlate
+        {
+            get
+            {
+                if (_Vehicle_GetByPlate is null)
+                    _Vehicle_GetByPlate = GetQuery();
+
+                return _Vehicle_GetByPlate;
+            }
+            set { _Vehicle_GetByPlate = value; }
+        }
+
+		private static string _Vehicle_GetByTypeAndBrand;
+        public static string Vehicle_GetByTypeAndBrand
+        {
+            get
+            {
+                if (_Vehicle_GetByTypeAndBrand is null)
+                    _Vehicle_GetByTypeAndBrand = GetQuery();
+
+                return _Vehicle_GetByTypeAndBrand;
+            }
+            set { _Vehicle_GetByTypeAndBrand = value; }
+        }
+
+		private static string _Vehicle_Update;
+        public static string Vehicle_Update
+        {
+            get
+            {
+                if (_Vehicle_Update is null)
+                    _Vehicle_Update = GetQuery();
+
+                return _Vehicle_Update;
+            }
+            set { _Vehicle_Update = value; }
         }
 
     }

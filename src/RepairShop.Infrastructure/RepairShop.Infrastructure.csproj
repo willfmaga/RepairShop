@@ -20,15 +20,27 @@
     <None Remove="Database\Queries\Person_Update.sql" />
     <None Remove="Database\Queries\Shop_Add.sql" />
     <None Remove="Database\Queries\Shop_ByDocument.sql" />
+    <None Remove="Database\Queries\Shop_ById.sql" />
     <None Remove="Database\Queries\Shop_ByName.sql" />
     <None Remove="Database\Queries\Shop_GetAll.sql" />
+    <None Remove="Database\Queries\Shop_Update.sql" />
     <None Remove="Database\Queries\Vehicle_Add.sql" />
+    <None Remove="Database\Queries\Vehicle_GetById.sql" />
+    <None Remove="Database\Queries\Vehicle_GetByPlate.sql" />
+    <None Remove="Database\Queries\Vehicle_GetByTypeAndBrand.sql" />
+    <None Remove="Database\Queries\Vehicle_Update.sql" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Database\Queries\Vehicle_GetByTypeAndBrand.sql" />
+    <EmbeddedResource Include="Database\Queries\Vehicle_Update.sql" />
+    <EmbeddedResource Include="Database\Queries\Shop_Update.sql" />
+    <EmbeddedResource Include="Database\Queries\Shop_ById.sql" />
     <EmbeddedResource Include="Database\Queries\Shop_ByDocument.sql" />
     <EmbeddedResource Include="Database\Queries\Shop_ByName.sql" />
     <EmbeddedResource Include="Database\Queries\Person_Update.sql" />
+    <EmbeddedResource Include="Database\Queries\Vehicle_GetByPlate.sql" />
+    <EmbeddedResource Include="Database\Queries\Vehicle_GetById.sql" />
     <EmbeddedResource Include="Database\Queries\Vehicle_Add.sql" />
     <EmbeddedResource Include="Database\Queries\Shop_GetAll.sql" />
     <EmbeddedResource Include="Database\Queries\Shop_Add.sql" />

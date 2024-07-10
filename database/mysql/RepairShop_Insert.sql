@@ -27,7 +27,8 @@ values (1, 'Red'),
        (5, 'Yellow'),
        (6, 'White'),
        (7, 'Gray'),
-       (8, 'Purple');
+       (8, 'Purple'),
+       (9, 'Beige');
 
 insert into ServiceType(Id, Description) 
 values (1, 'Service'),

@@ -10,18 +10,16 @@ namespace RepairShop.Domain.Interfaces.Repositories
     public interface IVehicleRepository
     {
 
-        public IEnumerable<Vehicle> GetAll();
+
         public Vehicle GetById(Int64 id);
 
         public Vehicle GetByPlate(string plate);
 
-        public Vehicle Add (Vehicle vehicle);
+        public Vehicle Add(Vehicle vehicle);
 
-        public Vehicle Update (Vehicle vehicle);
+        public void Update(Vehicle vehicle);
 
-        public Vehicle Delete (Vehicle vehicle);
-
-        public IEnumerable<Vehicle> GetByType(Type type);
-
+        public IEnumerable<Vehicle> GetByTypeAndBrand(VehicleType? vehicleType, VehicleBrand? vehicleBrand);
+        
     }
 }

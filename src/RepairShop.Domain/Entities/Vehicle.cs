@@ -14,17 +14,17 @@ namespace RepairShop.Domain.Entities
         public string Plate { get; set; }
         public string Name { get; set; }
 
-        public VehicleType Type { get; set; }
+        public VehicleType? TypeId { get; set; }
 
-        public VehicleBrand Brand { get; set; }
-        public string Model { get; set; }
+        public VehicleBrand? BrandId { get; set; }
+        public string? Model { get; set; }
 
-        public VehicleColor Color { get; set; }
+        public VehicleColor? ColorId { get; set; }
 
-        public Int16 ManufacturingYear { get; set; }
-        public Int16 Year { get; set; }
+        public Int16? ManufacturingYear { get; set; }
+        public Int16? Year { get; set; }
 
-        public bool Active { get; set; }
+        public bool? Active { get; set; }
 
     }
 
@@ -66,6 +66,8 @@ namespace RepairShop.Domain.Entities
         [Display(Name = "Cinza")]
         Gray = 7,
         [Display(Name = "Roxa")]
-        Purple = 8
+        Purple = 8,
+        [Display(Name = "Bege")]
+        Beige = 9
     }
 }

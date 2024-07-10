@@ -37,7 +37,7 @@ namespace RepairShopTest
 
             //assert 
             Assert.IsNotNull(result);
-            Assert.That(result.Id, Is.AtLeast(0));
+            Assert.That(result.Id, Is.AtLeast(1));
 
         }
 
@@ -104,7 +104,7 @@ namespace RepairShopTest
 
             //assert 
             Assert.IsNotNull(result);
-            Assert.That(result.Id, Is.AtLeast(0));
+            Assert.That(result.Id, Is.AtLeast(1));
 
         }
 
@@ -149,7 +149,7 @@ namespace RepairShopTest
 
             //assert 
             Assert.IsNotNull(result);
-            Assert.That(result.Id, Is.AtLeast(0));
+            Assert.That(result.Id, Is.AtLeast(1));
 
         }
 

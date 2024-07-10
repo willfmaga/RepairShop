@@ -16,5 +16,8 @@ namespace RepairShop.Domain.Interfaces.Repositories
         public IEnumerable<Shop> GetByDocument(string documentValue);
 
         public Shop Add(Shop shop);
+        public Shop GetById(Int64 id);
+
+        public void Update(Shop shop);
     }
 }

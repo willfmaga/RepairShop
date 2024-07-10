@@ -29,10 +29,18 @@ truncate table Person;
 -- SHOP 
 select * from Shop p 
 inner join Document d on d.Id = p.DocumentId 
-inner join DocumentType dt on d.Type = dt.Id;
+inner join DocumentType dt on d.TypeId = dt.Id;
 
 -- END SHOP 
 
+-- VEHICLE 
+select v.*, t.Description, b.Description, c.Description from Vehicle v
+inner join VehicleType t on t.Id = v.TypeId 
+inner join VehicleColor c on c.Id = v.ColorId
+inner join VehicleBrand b on b.Id = v.BrandId
+order by id ;
+
+-- END VEHICLE
 
 
 

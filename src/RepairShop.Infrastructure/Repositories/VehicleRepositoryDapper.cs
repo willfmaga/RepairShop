@@ -17,17 +17,16 @@ namespace RepairShop.Infrastructure.Repositories
 
         public Vehicle Add(Vehicle vehicle)
         {
-            string script = AllQueries.Shop_Add;
+            string script = AllQueries.Vehicle_Add;
             var param = new DynamicParameters();
 
 
-            param.Add("@Id", vehicle.Id, DbType.Int64);
             param.Add("@Plate", vehicle.Plate, DbType.String, size: 7);
             param.Add("@Name", vehicle.Name, DbType.String, size: 50);
-            param.Add("@Type", vehicle.Type, DbType.Int16);
-            param.Add("@Brand", vehicle.Brand, DbType.Int16);
+            param.Add("@TypeId", vehicle.TypeId, DbType.Int16);
+            param.Add("@BrandId", vehicle.BrandId, DbType.Int16);
             param.Add("@Model", vehicle.Model, DbType.String, size: 50);
-            param.Add("@Color", vehicle.Color, DbType.Int16);
+            param.Add("@ColorId", vehicle.ColorId, DbType.Int16);
             param.Add("@ManufacturingYear", vehicle.ManufacturingYear, DbType.Int16);
             param.Add("@Year", vehicle.Year, DbType.Int16);
             param.Add("@Active", vehicle.Active, DbType.Boolean);
@@ -38,34 +37,59 @@ namespace RepairShop.Infrastructure.Repositories
             return vehicle;
         }
 
-        public Vehicle Delete(Vehicle vehicle)
-        {
-            throw new NotImplementedException();
-        }
-
-        public IEnumerable<Vehicle> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
+     
         public Vehicle GetById(long id)
         {
-            throw new NotImplementedException();
+            string script = AllQueries.Vehicle_GetById;
+            var param = new DynamicParameters();
+
+            param.Add("@Id", id, DbType.Int64);
+
+            return ExecuteScriptWithoutTransactionSingle<Vehicle>(script, param);
         }
 
         public Vehicle GetByPlate(string plate)
         {
-            throw new NotImplementedException();
+            string script = AllQueries.Vehicle_GetByPlate;
+            var param = new DynamicParameters();
+
+            param.Add("@Plate", plate, DbType.String, size:7);
+
+            return ExecuteScriptWithoutTransactionSingle<Vehicle>(script, param);
         }
 
-        public IEnumerable<Vehicle> GetByType(Type type)
+        public IEnumerable<Vehicle> GetByTypeAndBrand(VehicleType? vehicleType, VehicleBrand? vehicleBrand)
         {
-            throw new NotImplementedException();
+            string script = AllQueries.Vehicle_GetByTypeAndBrand;
+            var param = new DynamicParameters();
+
+
+
+            param.Add("@TypeId", vehicleType, DbType.Int16);
+            param.Add("@BrandId", vehicleBrand, DbType.Int16);
+
+            return ExecuteScriptWithTransactionList<Vehicle>(script, param);
         }
 
-        public Vehicle Update(Vehicle vehicle)
+        public void Update(Vehicle vehicle)
         {
-            throw new NotImplementedException();
+            string script = AllQueries.Vehicle_Update;
+            var param = new DynamicParameters();
+
+
+            param.Add("@Id", vehicle.Id, DbType.Int64);
+
+            param.Add("@Plate", vehicle.Plate, DbType.String, size: 7);
+            param.Add("@Name", vehicle.Name, DbType.String, size: 50);
+            param.Add("@TypeId", vehicle.TypeId, DbType.Int16);
+            param.Add("@BrandId", vehicle.BrandId, DbType.Int16);
+            param.Add("@Model", vehicle.Model, DbType.String, size: 50);
+            param.Add("@ColorId", vehicle.ColorId, DbType.Int16);
+            param.Add("@ManufacturingYear", vehicle.ManufacturingYear, DbType.Int16);
+            param.Add("@Year", vehicle.Year, DbType.Int16);
+            param.Add("@Active", vehicle.Active, DbType.Boolean);
+
+            ExecuteScriptWithTransaction(script, param);
         }
     }
 }

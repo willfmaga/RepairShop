@@ -138,11 +138,11 @@ namespace RepairShopTest
         {
             //arrange 
             var vehicle = new Vehicle { Id = 1, 
-                                         Name = "XL883N Iron",
+                                         Name = "Shadow",
                                          BrandId  = VehicleBrand.Honda,
                                          ColorId = VehicleColor.Black,
                                          ManufacturingYear = 2018,
-                                         Model = "Iron",
+                                         Model = "Shadow 600",
                                          Plate  = "FAE7A10",
                                          TypeId = VehicleType.Car,
                                          Year = 2018,

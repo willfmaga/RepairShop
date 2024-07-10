@@ -24,6 +24,8 @@ namespace RepairShop.Domain.Entities
         public Int16 ManufacturingYear { get; set; }
         public Int16 Year { get; set; }
 
+        public bool Active { get; set; }
+
     }
 
     public enum VehicleType
@@ -32,7 +34,9 @@ namespace RepairShop.Domain.Entities
         [Display(Name = "Moto")]
         Bike = 1,
         [Display(Name = "Carro")]
-        Car = 2
+        Car = 2,
+        [Display(Name = "Caminhao")]
+        Truck = 3
     }
 
     public enum VehicleBrand
@@ -57,6 +61,7 @@ namespace RepairShop.Domain.Entities
         Blue = 4,
         [Display(Name = "Amarela")]
         Yellow = 5,
+        [Display(Name = "Branca")]
         White = 6,
         [Display(Name = "Cinza")]
         Gray = 7,

@@ -1,25 +1,35 @@
 use RepairShop;
 
+-- TYPE 
+select * from  DocumentType;
+select * from  PersonType;
+select * from  VehicleType;
+select * from  VehicleBrand;
+select * from  VehicleColor;
+select * from  ServiceType;
+-- END TYPE 
+
 -- DOCUMENT
-select * from Document;
+select * from Document d
+inner join DocumentType t
+on d.Type = t.Id;
 
 truncate table Document; 
 -- END DOCUMENT
 
 -- PERSON 
-select * from Person;
-select * from Person p inner join Document d on p.documentid = d.id ;
+select p.*, t.Description, d.Value, dt.Description from Person p 
+inner join Document d on p.documentid = d.id 
+inner join PersonType t on t.Id = p.Type
+inner join DocumentType dt on dt.Id = p.DocumentId;
 
 truncate table Person;
 -- END PERSON 
- 
- 
-select Id, Name, Surname, BirthDate, Type, DocumentId 
-  from Person
- where BirthDate = '1980-05-08';
 
 -- SHOP 
-select * from Shop ;
+select * from Shop p 
+inner join Document d on d.Id = p.DocumentId 
+inner join DocumentType dt on d.Type = dt.Id;
 
 -- END SHOP 
 

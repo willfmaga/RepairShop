@@ -1,3 +1,3 @@
-select Id, Name, Surname, BirthDate, Type, DocumentId 
+select Id, Name, Surname, BirthDate, TypeId, DocumentId 
   from Person
  where Name like concat('%', @Name,'%');;

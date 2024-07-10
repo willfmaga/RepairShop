@@ -1,4 +1,4 @@
-    select p.Id, p.Name, p.Surname, p.BirthDate, p.Type, p.DocumentId 
+    select p.Id, p.Name, p.Surname, p.BirthDate, p.TypeId, p.DocumentId 
 	  from Person p
 inner join Document d 
 		on d.Id = p.DocumentId 

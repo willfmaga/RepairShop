@@ -3,7 +3,7 @@
        Surname = IFNULL(@Surname, Surname),
      BirthDate = IFNULL(@BirthDate, BirthDate),
         Active = IFNULL(@Active,Active),
-	      Type = IFNULL(@Type, Type)
+	    TypeId = IFNULL(@TypeId, TypeId)
       WHERE Id = @Id;
 
 

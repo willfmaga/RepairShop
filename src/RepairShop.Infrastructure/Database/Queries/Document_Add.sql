@@ -1,7 +1,7 @@
 INSERT INTO Document
-(Type, Value)
+(TypeId, Value)
 VALUES(       
-       @Type, 
+       @TypeId, 
        @Value);
 
 

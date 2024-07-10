@@ -24,7 +24,7 @@ namespace RepairShopTest
             //arrange
             var person = new Person
             {
-                Type = PersonType.Client,
+                TypeId = PersonType.Client,
                 Name = "William",
                 Surname = "Fernandes",
                 BirthDate = new DateTime(1980, 05, 08),
@@ -119,7 +119,7 @@ namespace RepairShopTest
                 Surname = "Magalhaes",
                 BirthDate = new DateTime(1981, 09, 18),
                 DocumentId = 1,
-                Type = PersonType.Client,
+                TypeId = PersonType.Client,
                 Active = false
             };
 
@@ -131,7 +131,7 @@ namespace RepairShopTest
             var result = _repo.GetById(person.Id);
 
             Assert.IsNotNull(result);
-            Assert.That(result.Type, Is.EqualTo(person.Type));
+            Assert.That(result.TypeId, Is.EqualTo(person.TypeId));
             Assert.That(result.Name, Is.EqualTo(person.Name));
             Assert.That(result.Surname, Is.EqualTo(person.Surname));
 

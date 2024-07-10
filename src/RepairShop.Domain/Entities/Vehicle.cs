@@ -10,13 +10,13 @@ namespace RepairShop.Domain.Entities
 {
     public class Vehicle
     {
-        Int64 Id { get; set; }
-        string Plate { get; set; }
-        string Name { get; set; }
+        public Int64 Id { get; set; }
+        public string Plate { get; set; }
+        public string Name { get; set; }
 
-        VehicleType Type { get; set; }
+        public VehicleType Type { get; set; }
 
-        VehicleBrand Brand { get; set; }
+        public VehicleBrand Brand { get; set; }
         public string Model { get; set; }
 
         public VehicleColor Color { get; set; }

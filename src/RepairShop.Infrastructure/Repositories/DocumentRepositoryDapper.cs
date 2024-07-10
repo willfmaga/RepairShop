@@ -28,7 +28,7 @@ namespace RepairShop.Infrastructure.Repositories
 
             param.Add("@Id", document.Id, DbType.Int32);
             param.Add("@Value", document.Value, DbType.String, size: 14);
-            param.Add("@Type", document.Type, DbType.Int16);
+            param.Add("@TypeId", document.TypeId, DbType.Int16);
 
             document.Id = ExecuteScriptWithTransactionSingle<int>(script, param);
 
@@ -43,7 +43,7 @@ namespace RepairShop.Infrastructure.Repositories
 
 
             param.Add("@Id", document.Id, DbType.Int32);
-            param.Add("@Type", document.Type, DbType.Int16);
+            param.Add("@TypeId", document.TypeId, DbType.Int16);
             param.Add("@Active", document.Active, DbType.Boolean);
 
             ExecuteScriptWithTransaction(script, param);

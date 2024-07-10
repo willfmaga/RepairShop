@@ -216,5 +216,18 @@ namespace RepairShop.Infrastructure.Database.Queries
             set { _Shop_GetAll = value; }
         }
 
+		private static string _Vehicle_Add;
+        public static string Vehicle_Add
+        {
+            get
+            {
+                if (_Vehicle_Add is null)
+                    _Vehicle_Add = GetQuery();
+
+                return _Vehicle_Add;
+            }
+            set { _Vehicle_Add = value; }
+        }
+
     }
 }

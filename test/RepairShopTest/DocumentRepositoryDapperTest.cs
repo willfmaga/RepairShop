@@ -18,7 +18,7 @@ namespace RepairShopTest
         public void AddWhenObjectIsValid()
         {
             //arrange
-            var document = new Document { Type = DocumentType.CPF, Value = "18701886088" };
+            var document = new Document { TypeId = DocumentType.CPF, Value = "18701886088" };
 
             //act 
             var result = _repo.Add(document);
@@ -34,7 +34,7 @@ namespace RepairShopTest
         public void GetByValueWhenObjectExists()
         {
             //arrange
-            var document = new Document { Type = DocumentType.CPF, Value = "18701886088" };
+            var document = new Document { TypeId = DocumentType.CPF, Value = "18701886088" };
 
             //act 
             var result = _repo.GetByValue(document.Value);
@@ -53,7 +53,7 @@ namespace RepairShopTest
         {
             //arrange 
             var document = new Document { Id = 1, 
-                                        Type = DocumentType.CNPJ, 
+                                        TypeId = DocumentType.CNPJ, 
                                       Active = false 
                                         };
             
@@ -65,7 +65,7 @@ namespace RepairShopTest
             var result = _repo.Get(document.Id);
 
             Assert.IsNotNull(result);
-            Assert.That(result.Type, Is.EqualTo(document.Type));
+            Assert.That(result.TypeId, Is.EqualTo(document.TypeId));
             Assert.That(result.Active, Is.EqualTo(document.Active));
 
         }

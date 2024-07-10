@@ -17,7 +17,7 @@ namespace RepairShop.Domain.Entities
         public DateTime? BirthDate { get; set; }
         public Int64? DocumentId { get; set; }
 
-        public PersonType? Type { get; set; }
+        public PersonType? TypeId { get; set; }
 
         public bool? Active { get; set; }
 

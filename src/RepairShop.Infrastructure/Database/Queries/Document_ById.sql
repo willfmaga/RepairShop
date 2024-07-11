@@ -1,3 +1,3 @@
-select Id, TypeId, Value, Active
+select Id, TypeId, Value, Active, CreationDate
   from Document
  where Id = @Id

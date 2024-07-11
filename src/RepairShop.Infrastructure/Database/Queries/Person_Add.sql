@@ -2,12 +2,15 @@ INSERT INTO Person(Name,
 			Surname, 
 			BirthDate, 
 			TypeId, 
-			DocumentId)
+			DocumentId,
+			CreationDate)
 	VALUES (@Name, 
 			@Surname, 
 			@BirthDate, 
 			@TypeId, 
-			@DocumentId);
+			@DocumentId,
+			@CreationDate
+			);
 
 
 SELECT LAST_INSERT_ID();

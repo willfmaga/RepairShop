@@ -88,7 +88,7 @@ namespace RepairShopTest
             //assert 
             Assert.IsNotNull(result);
             Assert.That(result.First().BirthDate.Value.Date, Is.EqualTo(birthdate.Date));
-            Assert.Greater(result.Count(), 0);
+            Assert.That(result.Count(), Is.AtLeast(1));
 
         }
 

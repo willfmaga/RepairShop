@@ -6,6 +6,7 @@ using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Reflection.Metadata;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -30,7 +31,7 @@ namespace RepairShop.Infrastructure.Repositories
             param.Add("@ManufacturingYear", vehicle.ManufacturingYear, DbType.Int16);
             param.Add("@Year", vehicle.Year, DbType.Int16);
             param.Add("@Active", vehicle.Active, DbType.Boolean);
-
+            param.Add("@CreationDate", vehicle.CreationDate, DbType.DateTime);
 
             vehicle.Id = ExecuteScriptWithTransactionSingle<int>(script, param);
 
@@ -68,7 +69,7 @@ namespace RepairShop.Infrastructure.Repositories
             param.Add("@TypeId", vehicleType, DbType.Int16);
             param.Add("@BrandId", vehicleBrand, DbType.Int16);
 
-            return ExecuteScriptWithTransactionList<Vehicle>(script, param);
+            return ExecuteScriptWithoutTransactionList<Vehicle>(script, param);
         }
 
         public void Update(Vehicle vehicle)

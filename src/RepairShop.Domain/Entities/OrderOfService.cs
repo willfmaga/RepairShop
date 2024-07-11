@@ -17,7 +17,7 @@ namespace RepairShop.Domain.Entities
 
         public IEnumerable<String> GeneralObservations { get; set; }
 
-        public IEnumerable<ServiceItem> Items { get; set; }
+        public IEnumerable<Item> Items { get; set; }
         public Person Mechanic { get; set; }
         public Decimal AmountItems { get; set; }
         public Decimal AmountService { get; set; }

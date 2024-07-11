@@ -6,6 +6,7 @@ SELECT Plate,
 	   ColorId,
 	   ManufacturingYear,
 	   Year,
-	   Active
+	   Active,
+	   CreationDate
   FROM Vehicle 
  WHERE Id = @Id;

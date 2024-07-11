@@ -7,7 +7,9 @@ INSERT INTO Vehicle(
             ColorId,
             ManufacturingYear,
             Year, 
-            Active)
+            Active,
+            CreationDate
+            )
      VALUES ( 
              @Plate, 
              @Name, 
@@ -17,7 +19,9 @@ INSERT INTO Vehicle(
              @ColorId, 
              @ManufacturingYear, 
              @Year, 
-             @Active);
+             @Active,
+             @CreationDate
+             );
 
 
 SELECT LAST_INSERT_ID();

@@ -7,17 +7,21 @@ using System.Threading.Tasks;
 
 namespace RepairShop.Domain.Entities
 {
-    public class ServiceItem
+    public class Item
     {
         public Int64 Id { get; set; }
         public string Name { get; set; }
-        public decimal Price { get; set; }
-        public decimal CostPrice { get; set; }
+        public decimal? Price { get; set; }
+        public decimal? CostPrice { get; set; }
 
-        public ServiceType Type { get; set; }
+        public ItemType? TypeId { get; set; }
+
+        public DateTime? CreationDate { get; set; } = DateTime.Now;
+
+        public bool? OnlyDisplay { get; set; } 
     }
 
-    public enum ServiceType
+    public enum ItemType
     {
         none = 0,
         [Display(Name  = "Serviço")]
@@ -25,4 +29,5 @@ namespace RepairShop.Domain.Entities
         [Display(Name = "Peças")]
         Parts = 2
     }
+       
 }

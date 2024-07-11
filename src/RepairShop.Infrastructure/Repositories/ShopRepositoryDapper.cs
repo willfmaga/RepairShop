@@ -30,7 +30,7 @@ namespace RepairShop.Infrastructure.Repositories
             param.Add("@Address", shop.Address, DbType.String, size: 500);
             param.Add("@DocumentId", shop.DocumentId, DbType.Int16);
             param.Add("@Phone", shop.Phone, DbType.String, size:15);
-
+            param.Add("@CreationDate", shop.CreationDate, DbType.DateTime);
 
             shop.Id = ExecuteScriptWithTransactionSingle<int>(script, param);
 

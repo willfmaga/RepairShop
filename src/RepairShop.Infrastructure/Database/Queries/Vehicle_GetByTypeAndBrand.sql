@@ -6,7 +6,8 @@ SELECT Plate,
 	   ColorId,
 	   ManufacturingYear,
 	   Year,
-	   Active
+	   Active,
+	   CreationDate
   FROM Vehicle 
  WHERE TypeId = IFNULL(@TypeId, TypeId) AND
 	  BrandId = IFNULL(@BrandId, BrandId);

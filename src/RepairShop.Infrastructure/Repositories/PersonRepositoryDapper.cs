@@ -29,18 +29,14 @@ namespace RepairShop.Infrastructure.Repositories
             param.Add("@BirthDate", person.BirthDate, DbType.Date);
             param.Add("@TypeId", person.TypeId, DbType.Int16);
             param.Add("@DocumentId", person.TypeId, DbType.Int64);
-
+            param.Add("@CreationDate", person.CreationDate, DbType.DateTime);
 
             person.Id = ExecuteScriptWithTransactionSingle<int>(script, param);
 
             return person;
         }
 
-        public Person Delete(Person Person)
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public Person GetById(Int64 id)
         {
             string script = AllQueries.Person_ById;

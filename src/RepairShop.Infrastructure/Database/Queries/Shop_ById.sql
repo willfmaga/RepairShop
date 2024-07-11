@@ -4,7 +4,8 @@
 		   s.Address, 
 		   s.Phone, 
 		   s.DocumentId , 
-		   s.Active
+		   s.Active,
+		   s.CreationDate
 	  from Shop s
 	 where s.Id = @Id;
  

@@ -1,8 +1,12 @@
-INSERT INTO Document
-(TypeId, Value)
-VALUES(       
+INSERT INTO Document(
+            TypeId, 
+            Value,
+            CreationDate)
+     VALUES(       
        @TypeId, 
-       @Value);
+       @Value,
+       @CreationDate
+       );
 
 
 SELECT LAST_INSERT_ID();

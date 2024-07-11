@@ -16,6 +16,8 @@ namespace RepairShop.Domain.Entities
         
         public string Phone {  get; set; }
         public bool? Active { get; set; }
+
+        public DateTime? CreationDate { get; set; } = DateTime.Now;
     }
 
 

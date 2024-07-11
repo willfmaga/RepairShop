@@ -29,6 +29,7 @@ namespace RepairShop.Infrastructure.Repositories
             param.Add("@Id", document.Id, DbType.Int32);
             param.Add("@Value", document.Value, DbType.String, size: 14);
             param.Add("@TypeId", document.TypeId, DbType.Int16);
+            param.Add("@CreationDate", document.CreationDate, DbType.DateTime);
 
             document.Id = ExecuteScriptWithTransactionSingle<int>(script, param);
 

@@ -15,6 +15,7 @@ namespace RepairShop.Domain.Entities
         public string Value { get; set; }
 
         public bool? Active { get; set; }
+        public DateTime? CreationDate { get; set; } = DateTime.Now;
     }
 
     public enum DocumentType

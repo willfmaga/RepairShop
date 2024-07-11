@@ -49,7 +49,7 @@ namespace RepairShopTest
         public void GetByIdWhenObjectExists()
         {
             //arrange
-            var id = 2;
+            var id = 1;
 
             //act 
             var result = _repo.GetById(id);

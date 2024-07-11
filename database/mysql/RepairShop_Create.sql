@@ -23,7 +23,7 @@ create table VehicleColor(
 Id smallint not null primary key, 
 Description varchar(100));
 
-create table ServiceType(
+create table ItemType(
 Id smallint not null primary key, 
 Description varchar(100));
 
@@ -34,6 +34,7 @@ Id bigint AUTO_INCREMENT primary key not null,
 TypeId smallint not null, 
 Value varchar(14) not null,
 Active bit default 1 not null,
+CreationDate datetime not null,
 constraint FK_Document_DocumentType foreign key (TypeId) references DocumentType(Id));
 
 create table Person(
@@ -44,6 +45,7 @@ BirthDate date not null,
 TypeId smallint not null,
 DocumentId bigint not null,
 Active bit default 1 not null,
+CreationDate datetime not null,
 CONSTRAINT FK_Person_Document FOREIGN KEY (DocumentId) REFERENCES Document(Id),
 constraint FK_Person foreign key (TypeId) references PersonType(Id)
 );
@@ -55,6 +57,7 @@ Description varchar(500) not null,
 Address varchar(500) not null, 
 Phone varchar(13) not null,
 DocumentId bigint not null,
+CreationDate datetime not null,
 CONSTRAINT FK_Shop_Document FOREIGN KEY (DocumentId) REFERENCES Document(Id),
 Active bit default 1 not null
 );
@@ -70,11 +73,23 @@ ColorId smallint not null,
 ManufacturingYear smallint not null, 
 Year smallint not null,
 Active bit default 1 not null,
+CreationDate datetime not null,
 constraint FK_Vehicle_VehicleType foreign key (TypeId) references VehicleType(Id),
 constraint FK_Vehicle_VehicleBrand foreign key (BrandId) references VehicleBrand(Id),
 constraint FK_Vehicle_VehicleColor foreign key (ColorId) references VehicleColor(Id)
 );
 
+
+create table Item(
+Id bigint auto_increment primary key not null,
+Name varchar(250) not null, 
+Price decimal(18,2) not null, 
+CostPrice decimal(18,2) not null,
+TypeId smallint not null,
+CreationDate datetime not null,
+OnlyDisplay bit not null,
+constraint FK_Item_ItemType foreign key (TypeId) references ItemType(Id)
+);
 
 
  

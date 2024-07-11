@@ -11,7 +11,6 @@ namespace RepairShop.Domain.Interfaces.Repositories
     {
         public Person Add(Person Person);
         public void Update(Person Person);
-        public Person Delete(Person Person);
         public Person GetById(Int64 id);
         public IEnumerable<Person> GetByName(string name);
         public IEnumerable<Person> GetBySurname(string surname);

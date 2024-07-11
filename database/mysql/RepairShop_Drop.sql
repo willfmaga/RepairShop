@@ -1,5 +1,6 @@
 use RepairShop;
 
+drop table Item;
 drop table Vehicle;
 drop table Shop;
 drop table Person;
@@ -9,4 +10,4 @@ drop table PersonType;
 drop table VehicleType;
 drop table VehicleBrand;
 drop table VehicleColor;
-drop table ServiceType;
+drop table ItemType;

@@ -6,13 +6,14 @@ select * from  PersonType;
 select * from  VehicleType;
 select * from  VehicleBrand;
 select * from  VehicleColor;
-select * from  ServiceType;
+select * from  ItemType;
+
 -- END TYPE 
 
 -- DOCUMENT
 select * from Document d
 inner join DocumentType t
-on d.Type = t.Id;
+on d.TypeId = t.Id;
 
 truncate table Document; 
 -- END DOCUMENT
@@ -20,7 +21,7 @@ truncate table Document;
 -- PERSON 
 select p.*, t.Description, d.Value, dt.Description from Person p 
 inner join Document d on p.documentid = d.id 
-inner join PersonType t on t.Id = p.Type
+inner join PersonType t on t.Id = p.TypeId
 inner join DocumentType dt on dt.Id = p.DocumentId;
 
 truncate table Person;
@@ -40,7 +41,17 @@ inner join VehicleColor c on c.Id = v.ColorId
 inner join VehicleBrand b on b.Id = v.BrandId
 order by id ;
 
+truncate table Vehicle;
 -- END VEHICLE
+
+-- ITEM
+select * 
+from Item i 
+inner join ItemType t
+on i.TypeId = t.Id;
+
+truncate table Item;
+-- END ITEM
 
 
 

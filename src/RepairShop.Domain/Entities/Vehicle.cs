@@ -26,6 +26,8 @@ namespace RepairShop.Domain.Entities
 
         public bool? Active { get; set; }
 
+        public DateTime? CreationDate { get; set; } = DateTime.Now;
+
     }
 
     public enum VehicleType

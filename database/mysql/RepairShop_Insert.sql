@@ -30,6 +30,6 @@ values (1, 'Red'),
        (8, 'Purple'),
        (9, 'Beige');
 
-insert into ServiceType(Id, Description) 
+insert into ItemType(Id, Description) 
 values (1, 'Service'),
        (2, 'Parts');

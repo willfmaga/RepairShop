@@ -73,6 +73,97 @@ namespace RepairShop.Infrastructure.Database.Queries
             set { _Document_Update = value; }
         }
 
+		private static string _Item_Add;
+        public static string Item_Add
+        {
+            get
+            {
+                if (_Item_Add is null)
+                    _Item_Add = GetQuery();
+
+                return _Item_Add;
+            }
+            set { _Item_Add = value; }
+        }
+
+		private static string _Item_GetAllForDisplay;
+        public static string Item_GetAllForDisplay
+        {
+            get
+            {
+                if (_Item_GetAllForDisplay is null)
+                    _Item_GetAllForDisplay = GetQuery();
+
+                return _Item_GetAllForDisplay;
+            }
+            set { _Item_GetAllForDisplay = value; }
+        }
+
+		private static string _Item_GetById;
+        public static string Item_GetById
+        {
+            get
+            {
+                if (_Item_GetById is null)
+                    _Item_GetById = GetQuery();
+
+                return _Item_GetById;
+            }
+            set { _Item_GetById = value; }
+        }
+
+		private static string _Item_GetByName;
+        public static string Item_GetByName
+        {
+            get
+            {
+                if (_Item_GetByName is null)
+                    _Item_GetByName = GetQuery();
+
+                return _Item_GetByName;
+            }
+            set { _Item_GetByName = value; }
+        }
+
+		private static string _Item_GetByPriceAndCostPrice;
+        public static string Item_GetByPriceAndCostPrice
+        {
+            get
+            {
+                if (_Item_GetByPriceAndCostPrice is null)
+                    _Item_GetByPriceAndCostPrice = GetQuery();
+
+                return _Item_GetByPriceAndCostPrice;
+            }
+            set { _Item_GetByPriceAndCostPrice = value; }
+        }
+
+		private static string _Item_GetByType;
+        public static string Item_GetByType
+        {
+            get
+            {
+                if (_Item_GetByType is null)
+                    _Item_GetByType = GetQuery();
+
+                return _Item_GetByType;
+            }
+            set { _Item_GetByType = value; }
+        }
+
+		private static string _Item_Update;
+        public static string Item_Update
+        {
+            get
+            {
+                if (_Item_Update is null)
+                    _Item_Update = GetQuery();
+
+                return _Item_Update;
+            }
+            set { _Item_Update = value; }
+        }
+
 		private static string _Person_Add;
         public static string Person_Add
         {

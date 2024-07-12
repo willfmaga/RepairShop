@@ -53,8 +53,15 @@ on i.TypeId = t.Id;
 truncate table Item;
 -- END ITEM
 
+-- ORDEROFSERVICE 
+select * from OrderOfService o 
+inner join Person p1 on p1.Id = o.ClientId
+inner join Person p2 on p2.Id = o.MechanicId
+inner join Vehicle v on v.Id = o.VehicleId
+inner join Shop s on s.Id = o.ShopId;
 
-
+truncate table OrderOfService;
+-- END ORDEROFSERVICE
 
 
 

@@ -3,7 +3,7 @@ using RepairShop.Infrastructure.Repositories;
 
 namespace RepairShopTest
 {
-    public class DocumentRepositoryDapperTest
+    public class A_DocumentRepositoryDapperTest
     {
         private DocumentRepositoryDapper _repo;
 

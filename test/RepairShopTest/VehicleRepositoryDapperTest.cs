@@ -4,7 +4,7 @@ using RepairShop.Domain.Entities;
 
 namespace RepairShopTest
 {
-    public class VehicleRepositoryDapperTest
+    public class D_VehicleRepositoryDapperTest
     {
         private VehicleRepositoryDapper _repo;
         private string _plate;

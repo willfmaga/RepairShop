@@ -7,4 +7,3 @@ UPDATE Item
  WHERE Id = @Id;
 
 
-SELECT LAST_INSERT_ID();

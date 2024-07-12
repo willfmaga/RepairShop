@@ -91,5 +91,26 @@ OnlyDisplay bit not null,
 constraint FK_Item_ItemType foreign key (TypeId) references ItemType(Id)
 );
 
+create table OrderOfService(
+Id bigint auto_increment primary key not null, 
+ShopId bigint not null, 
+ClientId bigint not null, 
+MechanicId bigint not null, 
+VehicleId bigint not null, 
+GeneralObservations varchar(2500) not null, 
+AmountItem decimal(18,2) not null,
+AmountService decimal(18,2) not null, 
+Discount decimal(18,2) not null,
+Total decimal(18,2) not null, 
+InitialDate datetime not null, 
+DeliveryDate datetime not null, 
+CreationDate datetime not null,
+Active bit default 1 not null,
+constraint FK_Order_Shop foreign key (ShopId) references Shop(Id),
+constraint FK_Order_Person_Client foreign key (ClientId) references Person(Id),
+constraint FK_Order_Person_Mechanic foreign key (MechanicId) references Person(Id),
+constraint FK_Order_Vehicle foreign key (VehicleId) references Vehicle(Id)
+);
+
 
  

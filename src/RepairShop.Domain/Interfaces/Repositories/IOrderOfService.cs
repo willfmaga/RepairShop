@@ -16,8 +16,12 @@ namespace RepairShop.Domain.Interfaces.Repositories
 
         public IEnumerable<OrderOfService> GetByMechanic(Int64 mechanicId);
 
-        public IEnumerable<OrderOfService> GetByVehicle(string placa);
+        public IEnumerable<OrderOfService> GetByVehicle(Int64 vehicleId);
 
         public OrderOfService GetById(Int64 id);
+
+        public OrderOfService Add(OrderOfService orderOfService);
+
+        public void Update(OrderOfService orderOfService);
     }
 }

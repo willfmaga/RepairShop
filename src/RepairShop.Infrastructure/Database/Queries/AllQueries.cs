@@ -164,6 +164,110 @@ namespace RepairShop.Infrastructure.Database.Queries
             set { _Item_Update = value; }
         }
 
+		private static string _OrderOfService_Add;
+        public static string OrderOfService_Add
+        {
+            get
+            {
+                if (_OrderOfService_Add is null)
+                    _OrderOfService_Add = GetQuery();
+
+                return _OrderOfService_Add;
+            }
+            set { _OrderOfService_Add = value; }
+        }
+
+		private static string _OrderOfService_GetByClientId;
+        public static string OrderOfService_GetByClientId
+        {
+            get
+            {
+                if (_OrderOfService_GetByClientId is null)
+                    _OrderOfService_GetByClientId = GetQuery();
+
+                return _OrderOfService_GetByClientId;
+            }
+            set { _OrderOfService_GetByClientId = value; }
+        }
+
+		private static string _OrderOfService_GetByDeliveryDate;
+        public static string OrderOfService_GetByDeliveryDate
+        {
+            get
+            {
+                if (_OrderOfService_GetByDeliveryDate is null)
+                    _OrderOfService_GetByDeliveryDate = GetQuery();
+
+                return _OrderOfService_GetByDeliveryDate;
+            }
+            set { _OrderOfService_GetByDeliveryDate = value; }
+        }
+
+		private static string _OrderOfService_GetById;
+        public static string OrderOfService_GetById
+        {
+            get
+            {
+                if (_OrderOfService_GetById is null)
+                    _OrderOfService_GetById = GetQuery();
+
+                return _OrderOfService_GetById;
+            }
+            set { _OrderOfService_GetById = value; }
+        }
+
+		private static string _OrderOfService_GetByInitialDate;
+        public static string OrderOfService_GetByInitialDate
+        {
+            get
+            {
+                if (_OrderOfService_GetByInitialDate is null)
+                    _OrderOfService_GetByInitialDate = GetQuery();
+
+                return _OrderOfService_GetByInitialDate;
+            }
+            set { _OrderOfService_GetByInitialDate = value; }
+        }
+
+		private static string _OrderOfService_GetByMechanicId;
+        public static string OrderOfService_GetByMechanicId
+        {
+            get
+            {
+                if (_OrderOfService_GetByMechanicId is null)
+                    _OrderOfService_GetByMechanicId = GetQuery();
+
+                return _OrderOfService_GetByMechanicId;
+            }
+            set { _OrderOfService_GetByMechanicId = value; }
+        }
+
+		private static string _OrderOfService_GetByVehicleId;
+        public static string OrderOfService_GetByVehicleId
+        {
+            get
+            {
+                if (_OrderOfService_GetByVehicleId is null)
+                    _OrderOfService_GetByVehicleId = GetQuery();
+
+                return _OrderOfService_GetByVehicleId;
+            }
+            set { _OrderOfService_GetByVehicleId = value; }
+        }
+
+		private static string _OrderOfService_Update;
+        public static string OrderOfService_Update
+        {
+            get
+            {
+                if (_OrderOfService_Update is null)
+                    _OrderOfService_Update = GetQuery();
+
+                return _OrderOfService_Update;
+            }
+            set { _OrderOfService_Update = value; }
+        }
+
 		private static string _Person_Add;
         public static string Person_Add
         {

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace RepairShopTest
 {
-    public class ShopRepositoryDapperTest
+    public class C_ShopRepositoryDapperTest
     {
         private ShopRepositoryDapper _repo;
         private object _name;

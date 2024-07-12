@@ -1,5 +1,6 @@
 use RepairShop;
 
+drop table OrderOfService;
 drop table Item;
 drop table Vehicle;
 drop table Shop;

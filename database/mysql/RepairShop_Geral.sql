@@ -11,7 +11,7 @@ select * from  ItemType;
 -- END TYPE 
 
 -- DOCUMENT
-select * from Document d
+select d.*, t.Description from Document d
 inner join DocumentType t
 on d.TypeId = t.Id;
 

@@ -54,7 +54,7 @@ namespace RepairShopTest
             //arrange 
             var document = new Document { Id = 1, 
                                         TypeId = DocumentType.CNPJ, 
-                                      Active = false 
+                                        Active = false 
                                         };
             
             //act 
@@ -74,16 +74,16 @@ namespace RepairShopTest
         public void GetByIdWhenObjectExists()
         {
             //arrange
-            var document = new Document { Id = 1 };
+            
 
             //act 
-            var result = _repo.Get(document.Id);
+            var result = _repo.Get(1);
 
 
             //assert 
             Assert.IsNotNull(result);
-            Assert.That(result.Id, Is.EqualTo(document.Id));
-
+            Assert.That(result.Id, Is.EqualTo(1));
+            Assert.That(result.Active, Is.EqualTo(false));
         }
 
     }

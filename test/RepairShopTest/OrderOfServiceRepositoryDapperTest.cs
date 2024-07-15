@@ -11,11 +11,15 @@ namespace RepairShopTest
     public class F_OrderOfServiceRepositoryDapperTest
     {
         private OrderOfServiceRepositoryDapper _repo;
+        private DateTime _deliveryDate;
+        private DateTime _initialDate;
 
         [SetUp]
         public void Setup()
         {
             _repo = new OrderOfServiceRepositoryDapper(UtilForTest.connectionString);
+            _deliveryDate = DateTime.Now.AddDays(2);
+            _initialDate = DateTime.Now;
         }
 
         [Test]
@@ -31,8 +35,8 @@ namespace RepairShopTest
                 GeneralObservations = "VERIFICAR MOTO ESTOURANDO, VERIFICAR SETA QUE NAO ESTA FUNCIONANDO",
                 AmountItem = 500m,
                 AmountService = 250m,
-                InitialDate = DateTime.Now,
-                DeliveryDate = DateTime.Now.AddDays(2),
+                InitialDate = _initialDate,
+                DeliveryDate = _deliveryDate,
                 Discount = 100,
                 Active = true
             };
@@ -50,8 +54,8 @@ namespace RepairShopTest
                 GeneralObservations = "VERIFICAR PAINEL APAGADO",
                 AmountItem = 100m,
                 AmountService = 150m,
-                InitialDate = DateTime.Now,
-                DeliveryDate = DateTime.Now.AddDays(3),
+                InitialDate = _initialDate,
+                DeliveryDate = _deliveryDate.AddDays(-1),
                 Discount = 20,
                 Active = true
             };
@@ -102,17 +106,17 @@ namespace RepairShopTest
         public void GetByInitialDateWhenExists()
         {
             //arrange
-            DateTime birthdate = Convert.ToDateTime("2024-07-12 13:55:20");
+            
 
             //act 
-            var result = _repo.GetByInitialDate(birthdate);
+            var result = _repo.GetByInitialDate(_initialDate);
 
 
             ////assert 
             Assert.IsNotNull(result);
             Assert.That(result.Count(), Is.AtLeast(2));
-            
-            
+
+
 
         }
 
@@ -120,10 +124,9 @@ namespace RepairShopTest
         public void GetByDeliveryDateWhenExists()
         {
             //arrange
-            DateTime birthdate = Convert.ToDateTime("2024-07-15 13:55:20");
 
             //act 
-            var result = _repo.GetByDeliveryDate(birthdate);
+            var result = _repo.GetByDeliveryDate(_deliveryDate);
 
 
             ////assert 
@@ -180,7 +183,7 @@ namespace RepairShopTest
                 GeneralObservations = "VERIFICAR VAZAMENTO DE GASOLINA",
                 AmountItem = 200m,
                 AmountService = 950m,
-                InitialDate = DateTime.Now,
+                InitialDate = _initialDate.AddDays(-1),
                 DeliveryDate = DateTime.Now.AddDays(8),
                 Discount = 40M,
                 Active = false
@@ -194,7 +197,7 @@ namespace RepairShopTest
             var result = _repo.GetById(order.Id);
 
             Assert.IsNotNull(result);
-            Assert.That(result.Discount , Is.EqualTo(order.Discount));
+            Assert.That(result.Discount, Is.EqualTo(order.Discount));
             Assert.That(result.Active, Is.EqualTo(order.Active));
             Assert.That(result.AmountItem, Is.EqualTo(order.AmountItem));
 

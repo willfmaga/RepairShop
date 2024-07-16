@@ -1,16 +1,8 @@
 ﻿using Dapper;
-using Google.Protobuf.Compiler;
 using RepairShop.Domain.Entities;
 using RepairShop.Domain.Interfaces.Repositories;
 using RepairShop.Infrastructure.Database.Queries;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
 
 namespace RepairShop.Infrastructure.Repositories
 {

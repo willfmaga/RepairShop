@@ -19,7 +19,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairShop.Infrastructure",
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "test", "test", "{518D772E-6414-454C-9313-2AC128DBC0B3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairShopTest", "test\RepairShopTest\RepairShopTest.csproj", "{27DBD685-C803-4D2E-BAC1-0B24FFAB361A}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RepairShopTest", "test\RepairShopTest\RepairShopTest.csproj", "{27DBD685-C803-4D2E-BAC1-0B24FFAB361A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RepairShop.Application", "src\RepairShop.Application\RepairShop.Application.csproj", "{13205581-904F-4141-A6FC-4903D6CF926E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -39,6 +41,10 @@ Global
 		{27DBD685-C803-4D2E-BAC1-0B24FFAB361A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{27DBD685-C803-4D2E-BAC1-0B24FFAB361A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{27DBD685-C803-4D2E-BAC1-0B24FFAB361A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{13205581-904F-4141-A6FC-4903D6CF926E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{13205581-904F-4141-A6FC-4903D6CF926E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{13205581-904F-4141-A6FC-4903D6CF926E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{13205581-904F-4141-A6FC-4903D6CF926E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -51,6 +57,7 @@ Global
 		{922D5A02-2303-48F8-9512-B98645E04F46} = {29E675BC-9F94-4570-B7E7-AE594336E918}
 		{44B52F50-B027-40A5-AA3F-44D81131F68B} = {1676AFE7-9FC5-497D-83FA-A3D810501605}
 		{27DBD685-C803-4D2E-BAC1-0B24FFAB361A} = {518D772E-6414-454C-9313-2AC128DBC0B3}
+		{13205581-904F-4141-A6FC-4903D6CF926E} = {18F9EA7F-860D-4B9D-B73C-D7F3A58603D5}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {4FC7D65C-2FFE-4829-8FA9-999102B82EE7}

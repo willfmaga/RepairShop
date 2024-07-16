@@ -18,6 +18,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\src\RepairShop.Application\RepairShop.Application.csproj" />
     <ProjectReference Include="..\..\src\RepairShop.Domain\RepairShop.Domain.csproj" />
     <ProjectReference Include="..\..\src\RepairShop.Infrastructure\RepairShop.Infrastructure.csproj" />
   </ItemGroup>

@@ -12,11 +12,11 @@ using System.Threading.Tasks;
 
 namespace RepairShop.Infrastructure.Repositories
 {
-    public class OrderOfServiceRepositoryDapper : CrudBaseDapper<OrderOfService>, IOrderOfService
+    public class OrderRepositoryDapper : CrudBaseDapper<Order>, IOrderRepository
     {
-        public OrderOfServiceRepositoryDapper(string connectionString) : base(connectionString) { }
+        public OrderRepositoryDapper(string connectionString) : base(connectionString) { }
 
-        public OrderOfService Add(OrderOfService orderOfService)
+        public Order Add(Order orderOfService)
         {
             string script = AllQueries.OrderOfService_Add;
             var param = new DynamicParameters();
@@ -40,7 +40,7 @@ namespace RepairShop.Infrastructure.Repositories
             return orderOfService; ;
         }
 
-        public IEnumerable<OrderOfService> GetByClient(long clientId)
+        public IEnumerable<Order> GetByClient(long clientId)
         {
             string script = AllQueries.OrderOfService_GetByClientId;
             var param = new DynamicParameters();
@@ -48,12 +48,12 @@ namespace RepairShop.Infrastructure.Repositories
 
             param.Add("@ClientId", clientId, DbType.Int64);
 
-            return ExecuteScriptWithTransactionList<OrderOfService>(script, param);
+            return ExecuteScriptWithTransactionList<Order>(script, param);
 
 
         }
 
-        public IEnumerable<OrderOfService> GetByDeliveryDate(DateTime deliveryDate)
+        public IEnumerable<Order> GetByDeliveryDate(DateTime deliveryDate)
         {
             string script = AllQueries.OrderOfService_GetByDeliveryDate;
             var param = new DynamicParameters();
@@ -62,10 +62,10 @@ namespace RepairShop.Infrastructure.Repositories
             param.Add("@DeliveryDate", deliveryDate, DbType.DateTime);
 
 
-            return ExecuteScriptWithTransactionList<OrderOfService>(script, param);
+            return ExecuteScriptWithTransactionList<Order>(script, param);
         }
 
-        public OrderOfService GetById(long id)
+        public Order GetById(long id)
         {
             string script = AllQueries.OrderOfService_GetById;
             var param = new DynamicParameters();
@@ -73,10 +73,10 @@ namespace RepairShop.Infrastructure.Repositories
 
             param.Add("@Id", id, DbType.Int64);
 
-            return ExecuteScriptWithTransactionSingle<OrderOfService>(script, param);
+            return ExecuteScriptWithTransactionSingle<Order>(script, param);
         }
 
-        public IEnumerable<OrderOfService> GetByInitialDate(DateTime initialDate)
+        public IEnumerable<Order> GetByInitialDate(DateTime initialDate)
         {
             string script = AllQueries.OrderOfService_GetByInitialDate;
             var param = new DynamicParameters();
@@ -84,10 +84,10 @@ namespace RepairShop.Infrastructure.Repositories
 
             param.Add("@InitialDate", initialDate, DbType.DateTime);
 
-            return ExecuteScriptWithTransactionList<OrderOfService>(script, param);
+            return ExecuteScriptWithTransactionList<Order>(script, param);
         }
 
-        public IEnumerable<OrderOfService> GetByMechanic(long mechanicId)
+        public IEnumerable<Order> GetByMechanic(long mechanicId)
         {
             string script = AllQueries.OrderOfService_GetByMechanicId;
             var param = new DynamicParameters();
@@ -95,10 +95,10 @@ namespace RepairShop.Infrastructure.Repositories
 
             param.Add("@MechanicId", mechanicId, DbType.Int64);
 
-            return ExecuteScriptWithTransactionList<OrderOfService>(script, param);
+            return ExecuteScriptWithTransactionList<Order>(script, param);
         }
 
-        public IEnumerable<OrderOfService> GetByVehicle(Int64 vehicleId)
+        public IEnumerable<Order> GetByVehicle(Int64 vehicleId)
         {
             string script = AllQueries.OrderOfService_GetByVehicleId;
             var param = new DynamicParameters();
@@ -106,10 +106,10 @@ namespace RepairShop.Infrastructure.Repositories
 
             param.Add("@VehicleId", vehicleId, DbType.Int64);
 
-            return ExecuteScriptWithTransactionList<OrderOfService>(script, param);
+            return ExecuteScriptWithTransactionList<Order>(script, param);
         }
 
-        public void Update(OrderOfService orderOfService)
+        public void Update(Order orderOfService)
         {
             string script = AllQueries.OrderOfService_Update;
             var param = new DynamicParameters();

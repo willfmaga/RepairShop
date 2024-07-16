@@ -14,7 +14,7 @@ using System.Xml.Linq;
 
 namespace RepairShop.Infrastructure.Repositories
 {
-    public class ItemRepositoryDapper : CrudBaseDapper<Item>, ItemRepository
+    public class ItemRepositoryDapper : CrudBaseDapper<Item>, IItemRepository
     {
         public ItemRepositoryDapper(string connectionString) : base(connectionString) { }
 

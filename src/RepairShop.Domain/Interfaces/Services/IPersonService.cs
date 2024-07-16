@@ -5,12 +5,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace RepairShop.Domain.Interfaces.Repositories
+namespace RepairShop.Domain.Interfaces.Services
 {
-    public interface IPersonRepository
+    public interface IPersonService
     {
-        public Person Add(Person person);
-        public void Update(Person person);
+        public Person Add(Person Person);
+        public void Update(Person Person);
         public Person GetById(Int64 id);
         public IEnumerable<Person> GetByName(string name);
         public IEnumerable<Person> GetBySurname(string surname);

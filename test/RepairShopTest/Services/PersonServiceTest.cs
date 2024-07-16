@@ -1,21 +1,23 @@
 ﻿using RepairShop.Domain.Entities;
+using RepairShop.Domain.Interfaces.Repositories;
+using RepairShop.Domain.Interfaces.Services;
+using RepairShop.Domain.Services;
 using RepairShop.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RepairShopTest;
 
-namespace RepairShopTest
+namespace Services
 {
-    public class B_PersonRepositoryDapperTest
+    public class B_PersonServiceTest
     {
-        private PersonRepositoryDapper _repo;
+        private IPersonService _service;
+        private IPersonRepository _personRepository;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
-            _repo = new PersonRepositoryDapper(UtilForTest.connectionString);
+            _personRepository = new PersonRepositoryDapper(UtilForTest.connectionString);
+
+            _service = new PersonService(_personRepository);
         }
 
         [Test]
@@ -32,7 +34,7 @@ namespace RepairShopTest
             };
 
             //act 
-            var result = _repo.Add(person);
+            var result = _service.Add(person);
 
 
             //assert 
@@ -48,7 +50,7 @@ namespace RepairShopTest
             var name = "William";
 
             //act 
-            var result = _repo.GetByName(name);
+            var result = _service.GetByName(name);
 
 
             //assert 
@@ -65,7 +67,7 @@ namespace RepairShopTest
             var name = "Fern";
 
             //act 
-            var result = _repo.GetBySurname(name);
+            var result = _service.GetBySurname(name);
 
 
             //assert 
@@ -82,7 +84,7 @@ namespace RepairShopTest
             DateTime birthdate = new DateTime(1980, 05, 08);
 
             //act 
-            var result = _repo.GetByBirthDay(birthdate);
+            var result = _service.GetByBirthDay(birthdate);
 
 
             //assert 
@@ -99,7 +101,7 @@ namespace RepairShopTest
             var document = "18701886088";
 
             //act 
-            var result = _repo.GetByDocument(document);
+            var result = _service.GetByDocument(document);
 
 
             //assert 
@@ -124,11 +126,11 @@ namespace RepairShopTest
             };
 
             //act 
-            _repo.Update(person);
+            _service.Update(person);
 
 
             //assert 
-            var result = _repo.GetById(person.Id);
+            var result = _service.GetById(person.Id);
 
             Assert.IsNotNull(result);
             Assert.That(result.TypeId, Is.EqualTo(person.TypeId));
@@ -144,7 +146,7 @@ namespace RepairShopTest
             var id = 1;
 
             //act 
-            var result = _repo.GetById(id);
+            var result = _service.GetById(id);
 
 
             //assert 

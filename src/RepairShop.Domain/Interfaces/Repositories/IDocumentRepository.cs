@@ -6,7 +6,7 @@ namespace RepairShop.Domain.Interfaces.Repositories
     {
         public Document Add(Document document);
         public void Update(Document document);
-        public Document Get(Int64 id);
+        public Document GetById(Int64 id);
         public Document GetByValue(string value);
     }
 }

@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RepairShop.Domain.Interfaces.Repositories
 {
-    public interface ItemRepository
+    public interface IItemRepository
     {
         public IEnumerable<Item> GetAllForDisplay();
         public Item GetById(Int64 id);

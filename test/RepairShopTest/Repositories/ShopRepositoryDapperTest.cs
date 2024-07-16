@@ -1,19 +1,15 @@
 ﻿using RepairShop.Domain.Entities;
 using RepairShop.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RepairShopTest;
 
-namespace RepairShopTest
+namespace Repositories
 {
     public class C_ShopRepositoryDapperTest
     {
         private ShopRepositoryDapper _repo;
         private object _name;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             _repo = new ShopRepositoryDapper(UtilForTest.connectionString);
@@ -118,9 +114,9 @@ namespace RepairShopTest
             var result = _repo.GetById(shop.Id);
 
             Assert.IsNotNull(result);
-            Assert.That(result.Id , Is.EqualTo(shop.Id));
+            Assert.That(result.Id, Is.EqualTo(shop.Id));
             Assert.That(result.Name, Is.EqualTo(shop.Name));
-            Assert.That(result.Address , Is.EqualTo(shop.Address));
+            Assert.That(result.Address, Is.EqualTo(shop.Address));
 
         }
 

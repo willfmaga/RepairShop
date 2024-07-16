@@ -63,7 +63,14 @@ inner join Shop s on s.Id = o.ShopId;
 truncate table OrderOfService;
 -- END ORDEROFSERVICE
 
-
+SET FOREIGN_KEY_CHECKS = 0;
+truncate table OrderOfService;
+truncate table Item;
+truncate table Vehicle;
+truncate table Shop;
+truncate table Person;
+truncate table Document;
+SET FOREIGN_KEY_CHECKS = 1;
 
 
 

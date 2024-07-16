@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace RepairShop.Domain.Entities
 {
-    public class OrderOfService
+    public class Order
     {
         public Int64 Id { get; set; }
 

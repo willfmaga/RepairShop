@@ -1,18 +1,20 @@
 using RepairShop.Domain.Entities;
 using RepairShop.Infrastructure.Repositories;
+using RepairShopTest;
 
-namespace RepairShopTest
+namespace Repositories
 {
     public class A_DocumentRepositoryDapperTest
     {
         private DocumentRepositoryDapper _repo;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
-           
+            UtilForTest.TruncateTables();
             _repo = new DocumentRepositoryDapper(UtilForTest.connectionString);
         }
+
 
         [Test]
         public void AddWhenObjectIsValid()
@@ -52,17 +54,19 @@ namespace RepairShopTest
         public void UpdateWhenObjectExists()
         {
             //arrange 
-            var document = new Document { Id = 1, 
-                                        TypeId = DocumentType.CNPJ, 
-                                        Active = false 
-                                        };
-            
+            var document = new Document
+            {
+                Id = 1,
+                TypeId = DocumentType.CNPJ,
+                Active = false
+            };
+
             //act 
             _repo.Update(document);
 
 
             //assert 
-            var result = _repo.Get(document.Id);
+            var result = _repo.GetById(document.Id);
 
             Assert.IsNotNull(result);
             Assert.That(result.TypeId, Is.EqualTo(document.TypeId));
@@ -74,16 +78,16 @@ namespace RepairShopTest
         public void GetByIdWhenObjectExists()
         {
             //arrange
-            
+
 
             //act 
-            var result = _repo.Get(1);
+            var result = _repo.GetById(1);
 
 
             //assert 
             Assert.IsNotNull(result);
             Assert.That(result.Id, Is.EqualTo(1));
-            Assert.That(result.Active, Is.EqualTo(false));
+            Assert.That(result.Active, Is.EqualTo(true));
         }
 
     }

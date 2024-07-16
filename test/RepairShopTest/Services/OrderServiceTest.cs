@@ -1,23 +1,25 @@
 ﻿using RepairShop.Domain.Entities;
+using RepairShop.Domain.Interfaces.Repositories;
+using RepairShop.Domain.Services;
 using RepairShop.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RepairShopTest;
 
-namespace RepairShopTest
+namespace Services
 {
-    public class F_OrderOfServiceRepositoryDapperTest
+    [TestFixture]
+    public class F_OrderServiceTest
     {
-        private OrderOfServiceRepositoryDapper _repo;
+        private IOrderService _service;
+        private IOrderRepository _repo;
         private DateTime _deliveryDate;
         private DateTime _initialDate;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
-            _repo = new OrderOfServiceRepositoryDapper(UtilForTest.connectionString);
+
+            _repo = new OrderRepositoryDapper(UtilForTest.connectionString);
+            _service = new OrderService(_repo);
             _deliveryDate = DateTime.Now.AddDays(2);
             _initialDate = DateTime.Now;
         }
@@ -26,7 +28,7 @@ namespace RepairShopTest
         public void AddWhenObjectIsValid()
         {
             //arrange
-            var orderOfService = new OrderOfService
+            var orderOfService = new Order
             {
                 ShopId = 1,
                 ClientId = 1,
@@ -45,7 +47,7 @@ namespace RepairShopTest
             //act 
             var result = _repo.Add(orderOfService);
 
-            orderOfService = new OrderOfService
+            orderOfService = new Order
             {
                 ShopId = 1,
                 ClientId = 1,
@@ -106,7 +108,7 @@ namespace RepairShopTest
         public void GetByInitialDateWhenExists()
         {
             //arrange
-            
+
 
             //act 
             var result = _repo.GetByInitialDate(_initialDate);
@@ -173,7 +175,7 @@ namespace RepairShopTest
         public void UpdateWhenObjectExists()
         {
             //arrange 
-            var order = new OrderOfService
+            var order = new Order
             {
                 Id = 1,
                 ShopId = 1,

@@ -1,20 +1,20 @@
 ﻿using RepairShop.Infrastructure.Repositories;
-using RepairShopTest;
 using RepairShop.Domain.Entities;
+using RepairShopTest;
 
-namespace RepairShopTest
+namespace Repositories
 {
     public class D_VehicleRepositoryDapperTest
     {
         private VehicleRepositoryDapper _repo;
         private string _plate;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
             _repo = new VehicleRepositoryDapper(UtilForTest.connectionString);
             _plate = "FAE6A10";
-            
+
         }
 
         [Test]
@@ -64,7 +64,7 @@ namespace RepairShopTest
         [Test]
         public void GetByPlateWhenExists()
         {
-            
+
             //act 
             var result = _repo.GetByPlate(_plate);
 
@@ -79,7 +79,7 @@ namespace RepairShopTest
         public void GetByTypeWhenObjectExists()
         {
             //arrange
-            
+
             var type = VehicleType.Bike;
 
             //act 
@@ -99,7 +99,7 @@ namespace RepairShopTest
         {
             //arrange
             var brand = VehicleBrand.HarleyDavidson;
-            
+
 
             //act 
             var result = _repo.GetByTypeAndBrand(null, brand);
@@ -131,26 +131,28 @@ namespace RepairShopTest
         }
 
 
-        
+
 
         [Test]
         public void UpdateWhenObjectExists()
         {
             //arrange 
-            var vehicle = new Vehicle { Id = 1, 
-                                         Name = "Shadow",
-                                         BrandId  = VehicleBrand.Honda,
-                                         ColorId = VehicleColor.Black,
-                                         ManufacturingYear = 2018,
-                                         Model = "Shadow 600",
-                                         Plate  = "FAE7A10",
-                                         TypeId = VehicleType.Car,
-                                         Year = 2018,
-                                         Active = false
-                                        };
+            var vehicle = new Vehicle
+            {
+                Id = 1,
+                Name = "Shadow",
+                BrandId = VehicleBrand.Honda,
+                ColorId = VehicleColor.Black,
+                ManufacturingYear = 2018,
+                Model = "Shadow 600",
+                Plate = "FAE7A10",
+                TypeId = VehicleType.Car,
+                Year = 2018,
+                Active = false
+            };
 
             //act 
-             _repo.Update(vehicle);
+            _repo.Update(vehicle);
 
 
             //assert 

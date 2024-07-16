@@ -1,21 +1,22 @@
 ﻿using RepairShop.Domain.Entities;
+using RepairShop.Domain.Interfaces.Repositories;
+using RepairShop.Domain.Interfaces.Services;
+using RepairShop.Domain.Services;
 using RepairShop.Infrastructure.Repositories;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using RepairShopTest;
 
-namespace RepairShopTest
+namespace Services
 {
-    public class E_ItemRepositoryDapperTest
+    public class E_ItemServiceTest
     {
-        private RepairShop.Infrastructure.Repositories.ItemRepositoryDapper _repo;
+        private IItemRepository _repo;
+        private IItemService _itemService;
 
-        [SetUp]
+        [OneTimeSetUp]
         public void Setup()
         {
-            _repo = new RepairShop.Infrastructure.Repositories.ItemRepositoryDapper(UtilForTest.connectionString);
+            _repo = new ItemRepositoryDapper(UtilForTest.connectionString);
+            _itemService = new ItemService(_repo);
         }
 
         [Test]
@@ -33,7 +34,7 @@ namespace RepairShopTest
             };
 
             //act 
-            var result = _repo.Add(item);
+            var result = _itemService.Add(item);
 
 
             //assert 
@@ -48,7 +49,7 @@ namespace RepairShopTest
             //arrange
 
             //act 
-            var result = _repo.GetAllForDisplay();
+            var result = _itemService.GetAllForDisplay();
 
 
             //assert 
@@ -64,7 +65,7 @@ namespace RepairShopTest
             var id = 1;
 
             //act 
-            var result = _repo.GetById(id);
+            var result = _itemService.GetById(id);
 
 
             //assert 
@@ -80,7 +81,7 @@ namespace RepairShopTest
             var name = "obra";
 
             //act 
-            var result = _repo.GetByName(name);
+            var result = _itemService.GetByName(name);
 
 
             ////assert 
@@ -97,7 +98,7 @@ namespace RepairShopTest
             decimal price = 100.00m;
 
             //act 
-            var result = _repo.GetByPriceAndCostPrice(price, null);
+            var result = _itemService.GetByPriceAndCostPrice(price, null);
 
 
             ////assert 
@@ -113,7 +114,7 @@ namespace RepairShopTest
             decimal costprice = 50m;
 
             //act 
-            var result = _repo.GetByPriceAndCostPrice(null, costprice);
+            var result = _itemService.GetByPriceAndCostPrice(null, costprice);
 
 
             ////assert 
@@ -129,7 +130,7 @@ namespace RepairShopTest
             var type = ItemType.Service;
 
             //act 
-            var result = _repo.GetByType(type);
+            var result = _itemService.GetByType(type);
 
 
             //assert 
@@ -149,16 +150,16 @@ namespace RepairShopTest
                 Name = "Tampa de Valvula Shadow 600",
                 Price = 80m,
                 CostPrice = 40m,
-                OnlyDisplay  = false,
+                OnlyDisplay = false,
                 TypeId = ItemType.Parts
             };
 
             //act 
-            _repo.Update(item);
+            _itemService.Update(item);
 
 
             //assert 
-            var result = _repo.GetById(item.Id);
+            var result = _itemService.GetById(item.Id);
 
             Assert.IsNotNull(result);
             Assert.That(result.TypeId, Is.EqualTo(item.TypeId));

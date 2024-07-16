@@ -52,7 +52,7 @@ namespace RepairShop.Infrastructure.Repositories
              
         }
 
-        public Document Get(Int64 id)
+        public Document GetById(Int64 id)
         {
             string script = AllQueries.Document_ById;
             var param = new DynamicParameters();

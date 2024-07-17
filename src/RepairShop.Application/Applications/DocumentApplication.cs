@@ -4,6 +4,7 @@ using RepairShop.Application.Interfaces;
 using RepairShop.Application.Validations;
 using RepairShop.Domain.Entities;
 using RepairShop.Domain.Interfaces.Services;
+using System.Reflection.Metadata;
 
 
 namespace RepairShop.Application.Applications
@@ -19,32 +20,94 @@ namespace RepairShop.Application.Applications
 
         public DocumentDTO Add(DocumentDTO document)
         {
-            Validar(document);
+            try
+            {
+                Validar(document);
 
-            if (Status == ApplicationStatus.Erro || Status == ApplicationStatus.ErroNegocio)
-                return null;
+                if (Status == ApplicationStatus.ErroNegocio)
+                {
+                    ErrorMessage = ErrorsToString();
+                    return null!;
+                }
 
-            var entity = _mapper.Map<Document>(document);
+                var entity = _mapper.Map<Domain.Entities.Document>(document);
 
-            entity = _service.Add(entity);
+                entity = _service.Add(entity);
 
-            return _mapper.Map<DocumentDTO>(entity);
-                
+                return _mapper.Map<DocumentDTO>(entity);
+            }
+            catch (Exception e)
+            {
+                Status = ApplicationStatus.Erro;
+                ErrorMessage = e.Message;
+                return null!;
+            }
         }
 
         public DocumentDTO GetById(long id)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = _service.GetById(id);
+                var dto = _mapper.Map<DocumentDTO>(entity);
+
+                return dto;
+            }
+            catch (Exception e)
+            {
+
+                Status = ApplicationStatus.Erro;
+                ErrorMessage = e.Message;
+                return null!;
+            }
         }
 
         public DocumentDTO GetByValue(string value)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = _service.GetByValue(value);
+                var dto = _mapper.Map<DocumentDTO>(entity);
+
+                return dto;
+            }
+            catch (Exception e)
+            {
+
+                Status = ApplicationStatus.Erro;
+                ErrorMessage = e.Message;
+                return null!;
+            }
         }
 
-        public void Update(DocumentDTO document)
+        public void Update(DocumentUpdateDTO document)
         {
-            throw new NotImplementedException();
+            try
+            {
+                var entity = _service.GetByValue(document.Value);
+
+
+                if (entity is not null)
+                {
+                    entity.Active = document.Active;
+                    entity.TypeId = (Domain.Entities.DocumentType)document.TypeId;
+
+                    _service.Update(entity);
+                }
+                else
+                {
+                    Status = ApplicationStatus.ErroNegocio;
+                }
+                   
+                
+            }
+            catch (Exception e)
+            {
+
+                Status = ApplicationStatus.Erro;
+                ErrorMessage = e.Message;
+                
+            }
         }
 
         public void Validar(DocumentDTO document)

@@ -16,6 +16,8 @@ namespace RepairShop.Application.Applications
             return JsonConvert.SerializeObject(errors);  
         }
         public virtual void Validar() { }
+
+        public string ErrorMessage {  get; set; }   
     }
 
     public enum ApplicationStatus

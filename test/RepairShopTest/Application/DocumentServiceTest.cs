@@ -17,6 +17,7 @@ namespace Application
         private IDocumentService _service;
         private IDocumentRepository _repository;
         private IDocumentApplication _application;
+        private DocumentDTO _document;
 
         [OneTimeSetUp]
         public void Setup()
@@ -27,18 +28,18 @@ namespace Application
             _repository = new DocumentRepositoryDapper(UtilForTest.connectionString);
             _service = new DocumentService(_repository);
             _application = new DocumentApplication(_service);
+            _document = new DocumentDTO  {
+                TypeId = DocumentType.CPF,
+                Value = "18701886088"
+            };
         }
 
 
         [Test]
         public void AddWhenObjectIsValid()
         {
-            //arrange
-            DocumentDTO document = new() { TypeId = DocumentType.CPF, 
-                                           Value = "18701886088" };
-
             //act 
-            var result = _application.Add(document);
+            var result = _application.Add(_document);
 
             var status = _application.Status;
 
@@ -46,7 +47,7 @@ namespace Application
             //assert 
             Assert.IsTrue(status == ApplicationStatus.Sucesso);
             Assert.IsNotNull(result);
-            Assert.That(result.Value, Is.EqualTo(document.Value));
+            Assert.That(result.Value, Is.EqualTo(_document.Value));
             
 
         }
@@ -55,7 +56,7 @@ namespace Application
         public void NotAddWhenObjectIsInvalid()
         {
             //arrange
-            DocumentDTO document = new()
+            var document = new DocumentDTO
             {
                 TypeId = DocumentType.None
                 
@@ -77,47 +78,69 @@ namespace Application
 
         }
 
-        //[Test]
-        //public void GetByValueWhenObjectExists()
-        //{
-        //    //arrange
-        //    var document = new Document { TypeId = DocumentType.CPF, Value = "18701886088" };
+        [Test]
+        public void NotAddWhenObjectIsNull()
+        {
+            //arrange
+            
 
-        //    //act 
-        //    var result = _service.GetByValue(document.Value);
+            //act 
+            var result = _application.Add(null!);
 
+            var status = _application.Status;
+            
 
-        //    //assert 
-        //    Assert.IsNotNull(result);
-        //    Assert.That(result.Value, Is.EqualTo(document.Value));
-
-        //}
-
-
-
-        //[Test]
-        //public void UpdateWhenObjectExists()
-        //{
-        //    //arrange 
-        //    var document = new Document
-        //    {
-        //        Id = 1,
-        //        TypeId = DocumentType.CNPJ,
-        //        Active = false
-        //    };
-
-        //    //act 
-        //    _service.Update(document);
+            //assert 
+            Assert.IsTrue(status == ApplicationStatus.Erro);
+            Assert.IsNull(result);
 
 
-        //    //assert 
-        //    var result = _service.GetById(document.Id);
 
-        //    Assert.IsNotNull(result);
-        //    Assert.That(result.TypeId, Is.EqualTo(document.TypeId));
-        //    Assert.That(result.Active, Is.EqualTo(document.Active));
+        }
 
-        //}
+        [Test]
+        public void GetByValueWhenObjectExists()
+        {
+            //arrange
+            _application.Add(_document);
+
+            //act 
+            var result = _application.GetByValue(_document.Value);
+
+
+            //assert 
+            Assert.IsNotNull(result);
+            Assert.That(result.Value, Is.EqualTo(_document.Value));
+
+        }
+
+
+
+        [Test]
+        public void UpdateWhenObjectExists()
+        {
+            //arrange
+            _application.Add(_document);
+
+            var documentoUpdateDTO = new DocumentUpdateDTO
+            {
+                TypeId = DocumentType.CNPJ,
+                Active = false,
+                Value = _document.Value 
+            };
+
+            //act 
+            _application.Update(documentoUpdateDTO);
+
+
+            //assert 
+            var result = _application.GetById(1);
+
+            Assert.IsNotNull(result);
+            Assert.That(result.TypeId, Is.EqualTo(documentoUpdateDTO.TypeId));
+            Assert.That(false, Is.EqualTo(documentoUpdateDTO.Active));
+
+        }
 
         //[Test]
         //public void GetByIdWhenObjectExists()

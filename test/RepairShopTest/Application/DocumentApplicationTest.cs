@@ -1,4 +1,3 @@
-using Google.Protobuf.WellKnownTypes;
 using RepairShop.Application.Applications;
 using RepairShop.Application.DTOs;
 using RepairShop.Application.Interfaces;
@@ -7,7 +6,6 @@ using RepairShop.Domain.Interfaces.Services;
 using RepairShop.Domain.Services;
 using RepairShop.Infrastructure.Repositories;
 using RepairShopTest;
-using System.Runtime.ConstrainedExecution;
 
 namespace Application
 {

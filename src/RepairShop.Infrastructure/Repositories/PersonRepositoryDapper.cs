@@ -28,7 +28,7 @@ namespace RepairShop.Infrastructure.Repositories
             param.Add("@Surname", person.Surname, DbType.String, size: 100);
             param.Add("@BirthDate", person.BirthDate, DbType.Date);
             param.Add("@TypeId", person.TypeId, DbType.Int16);
-            param.Add("@DocumentId", person.TypeId, DbType.Int64);
+            param.Add("@DocumentId", person.DocumentId, DbType.Int64);
             param.Add("@CreationDate", person.CreationDate, DbType.DateTime);
 
             person.Id = ExecuteScriptWithTransactionSingle<int>(script, param);

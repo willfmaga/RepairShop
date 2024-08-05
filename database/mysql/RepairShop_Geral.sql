@@ -1,5 +1,8 @@
 use RepairShop;
 
+-- SET FOREIGN_KEY_CHECKS = 0;
+-- SET FOREIGN_KEY_CHECKS = 1;
+
 -- TYPE 
 select * from  DocumentType;
 select * from  PersonType;
@@ -24,6 +27,7 @@ inner join Document d on p.documentid = d.id
 inner join PersonType t on t.Id = p.TypeId
 inner join DocumentType dt on dt.Id = p.DocumentId;
 
+select * from Person;
 truncate table Person;
 -- END PERSON 
 

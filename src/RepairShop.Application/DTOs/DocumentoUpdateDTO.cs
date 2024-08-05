@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RepairShop.Application.DTOs
+﻿namespace RepairShop.Application.DTOs
 {
-
     public class DocumentUpdateDTO
     {
         public DocumentType? TypeId { get; set; }
@@ -16,7 +8,4 @@ namespace RepairShop.Application.DTOs
         public bool Active { get; set; } = true;
 
     }
-
-  
-
 }

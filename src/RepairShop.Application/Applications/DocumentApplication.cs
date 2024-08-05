@@ -2,9 +2,7 @@
 using RepairShop.Application.DTOs;
 using RepairShop.Application.Interfaces;
 using RepairShop.Application.Validations;
-using RepairShop.Domain.Entities;
 using RepairShop.Domain.Interfaces.Services;
-using System.Reflection.Metadata;
 
 
 namespace RepairShop.Application.Applications

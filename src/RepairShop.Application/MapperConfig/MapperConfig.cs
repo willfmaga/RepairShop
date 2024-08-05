@@ -1,10 +1,6 @@
 ﻿using AutoMapper;
 using RepairShop.Application.MapperConfig.Profilers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+
 
 namespace RepairShop.Application.MapperConfig
 {
@@ -22,6 +18,7 @@ namespace RepairShop.Application.MapperConfig
                     var config = new MapperConfiguration(cfg =>
                     {
                         cfg.AddProfile<DocumentProfiler>();
+                        cfg.AddProfile<PersonProfiler>();
                     });
 
                     _mapper = config.CreateMapper();

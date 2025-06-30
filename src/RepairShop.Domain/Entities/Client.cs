@@ -8,33 +8,19 @@ using System.Threading.Tasks;
 
 namespace RepairShop.Domain.Entities
 {
-    public class Person
+    public class Client
     {
         public Int64 Id { get; set; }
 
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime? BirthDate { get; set; }
-        public Int64? DocumentId { get; set; }
-
-        public PersonType? TypeId { get; set; }
+        public string Document { get; set; }
 
         public bool? Active { get; set; }
 
         public DateTime? CreationDate { get; set; } = DateTime.Now;
 
     }
-
-    public enum PersonType
-    {
-        none = 0,
-        [Display(Name = "Cliente")]
-        Client = 1,
-        [Display(Name = "Mecanico")]
-        Mechanic = 2,
-        [Display(Name = "Proprietario")]
-        Owner = 3
-
-    }
-
+      
 }

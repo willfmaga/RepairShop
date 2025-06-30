@@ -17,8 +17,7 @@ namespace RepairShop.Application.MapperConfig
                 {
                     var config = new MapperConfiguration(cfg =>
                     {
-                        cfg.AddProfile<DocumentProfiler>();
-                        cfg.AddProfile<PersonProfiler>();
+                        cfg.AddProfile<ClientProfiler>();
                     });
 
                     _mapper = config.CreateMapper();

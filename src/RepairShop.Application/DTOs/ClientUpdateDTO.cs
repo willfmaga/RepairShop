@@ -1,11 +1,11 @@
 ﻿namespace RepairShop.Application.DTOs
 {
-    public class PersonUpdateDTO
+    public class ClientUpdateDTO
     {
         public string Name { get; set; }
         public string Surname { get; set; }
         public DateTime? BirthDate { get; set; }
-        public PersonType? TypeId { get; set; }
-        public string DocumentValue { get; set; }
+        
+        public string Document { get; set; }
     }
 }

@@ -3,38 +3,38 @@ using RepairShop.Domain.Interfaces.Repositories;
 using RepairShop.Domain.Interfaces.Services;
 using RepairShop.Domain.Services;
 using RepairShop.Infrastructure.Repositories;
+
 using RepairShopTest;
 
 namespace Services
 {
-    public class B_PersonServiceTest
+    public class A_ClientServiceTest
     {
-        private IPersonService _service;
-        private IPersonRepository _personRepository;
+        private IClientService _service;
+        private IClientRepository _personRepository;
 
         [OneTimeSetUp]
         public void Setup()
         {
-            _personRepository = new PersonRepositoryDapper(UtilForTest.connectionString);
+            _personRepository = new ClientRepositoryDapper(UtilForTest.connectionString);
 
-            _service = new PersonService(_personRepository);
+            _service = new ClientService(_personRepository);
         }
 
         [Test]
         public void AddWhenObjectIsValid()
         {
             //arrange
-            var person = new Person
+            var client = new Client
             {
-                TypeId = PersonType.Client,
                 Name = "William",
                 Surname = "Fernandes",
                 BirthDate = new DateTime(1980, 05, 08),
-                DocumentId = 1
+                Document = "73748752075"
             };
 
             //act 
-            var result = _service.Add(person);
+            var result = _service.Add(client);
 
 
             //assert 
@@ -98,7 +98,7 @@ namespace Services
         public void GetByDocumentWhenObjectExists()
         {
             //arrange
-            var document = "18701886088";
+            var document = "73748752075";
 
             //act 
             var result = _service.GetByDocument(document);
@@ -114,14 +114,13 @@ namespace Services
         public void UpdateWhenObjectExists()
         {
             //arrange 
-            var person = new Person
+            var person = new Client
             {
                 Id = 1,
                 Name = "Gisele",
                 Surname = "Magalhaes",
                 BirthDate = new DateTime(1981, 09, 18),
-                DocumentId = 1,
-                TypeId = PersonType.Client,
+                Document = "73748752075",
                 Active = false
             };
 
@@ -133,7 +132,6 @@ namespace Services
             var result = _service.GetById(person.Id);
 
             Assert.IsNotNull(result);
-            Assert.That(result.TypeId, Is.EqualTo(person.TypeId));
             Assert.That(result.Name, Is.EqualTo(person.Name));
             Assert.That(result.Surname, Is.EqualTo(person.Surname));
 

@@ -10,7 +10,7 @@ namespace RepairShopTest
 {
     public class UtilForTest
     {
-        public static string connectionString = @"server=localhost;port=3306;database=RepairShop;user=root;password=root;";
+        public static string connectionString = @"server=localhost;port=3306;database=RepairShop;user=RepairUser;password=123456;";
 
 
         public static void TruncateTables()
@@ -18,12 +18,8 @@ namespace RepairShopTest
             MySqlConnection connection = new MySqlConnection(connectionString);
 
             var command = string.Concat("SET FOREIGN_KEY_CHECKS = 0;",
-                                        "truncate table OrderOfService;",
-                                        "truncate table Item;",
-                                        "truncate table Vehicle;",
-                                        "truncate table Shop;",
-                                        "truncate table Person;",
-                                        "truncate table Document;",
+                                        "truncate table Client;",
+                                        "",
                                         "SET FOREIGN_KEY_CHECKS = 1;");
 
             using (MySqlCommand cmd = new MySqlCommand(command, connection))

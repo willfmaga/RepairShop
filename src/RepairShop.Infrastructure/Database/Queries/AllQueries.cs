@@ -21,6 +21,97 @@ namespace RepairShop.Infrastructure.Database.Queries
             }
         } 
 
+		private static string _Client_Add;
+        public static string Client_Add
+        {
+            get
+            {
+                if (_Client_Add is null)
+                    _Client_Add = GetQuery();
+
+                return _Client_Add;
+            }
+            set { _Client_Add = value; }
+        }
+
+		private static string _Client_ByBirthDate;
+        public static string Client_ByBirthDate
+        {
+            get
+            {
+                if (_Client_ByBirthDate is null)
+                    _Client_ByBirthDate = GetQuery();
+
+                return _Client_ByBirthDate;
+            }
+            set { _Client_ByBirthDate = value; }
+        }
+
+		private static string _Client_ByDocument;
+        public static string Client_ByDocument
+        {
+            get
+            {
+                if (_Client_ByDocument is null)
+                    _Client_ByDocument = GetQuery();
+
+                return _Client_ByDocument;
+            }
+            set { _Client_ByDocument = value; }
+        }
+
+		private static string _Client_ById;
+        public static string Client_ById
+        {
+            get
+            {
+                if (_Client_ById is null)
+                    _Client_ById = GetQuery();
+
+                return _Client_ById;
+            }
+            set { _Client_ById = value; }
+        }
+
+		private static string _Client_ByName;
+        public static string Client_ByName
+        {
+            get
+            {
+                if (_Client_ByName is null)
+                    _Client_ByName = GetQuery();
+
+                return _Client_ByName;
+            }
+            set { _Client_ByName = value; }
+        }
+
+		private static string _Client_BySurname;
+        public static string Client_BySurname
+        {
+            get
+            {
+                if (_Client_BySurname is null)
+                    _Client_BySurname = GetQuery();
+
+                return _Client_BySurname;
+            }
+            set { _Client_BySurname = value; }
+        }
+
+		private static string _Client_Update;
+        public static string Client_Update
+        {
+            get
+            {
+                if (_Client_Update is null)
+                    _Client_Update = GetQuery();
+
+                return _Client_Update;
+            }
+            set { _Client_Update = value; }
+        }
+
 		private static string _Document_Add;
         public static string Document_Add
         {
@@ -266,97 +357,6 @@ namespace RepairShop.Infrastructure.Database.Queries
                 return _OrderOfService_Update;
             }
             set { _OrderOfService_Update = value; }
-        }
-
-		private static string _Person_Add;
-        public static string Person_Add
-        {
-            get
-            {
-                if (_Person_Add is null)
-                    _Person_Add = GetQuery();
-
-                return _Person_Add;
-            }
-            set { _Person_Add = value; }
-        }
-
-		private static string _Person_ByBirthDate;
-        public static string Person_ByBirthDate
-        {
-            get
-            {
-                if (_Person_ByBirthDate is null)
-                    _Person_ByBirthDate = GetQuery();
-
-                return _Person_ByBirthDate;
-            }
-            set { _Person_ByBirthDate = value; }
-        }
-
-		private static string _Person_ByDocument;
-        public static string Person_ByDocument
-        {
-            get
-            {
-                if (_Person_ByDocument is null)
-                    _Person_ByDocument = GetQuery();
-
-                return _Person_ByDocument;
-            }
-            set { _Person_ByDocument = value; }
-        }
-
-		private static string _Person_ById;
-        public static string Person_ById
-        {
-            get
-            {
-                if (_Person_ById is null)
-                    _Person_ById = GetQuery();
-
-                return _Person_ById;
-            }
-            set { _Person_ById = value; }
-        }
-
-		private static string _Person_ByName;
-        public static string Person_ByName
-        {
-            get
-            {
-                if (_Person_ByName is null)
-                    _Person_ByName = GetQuery();
-
-                return _Person_ByName;
-            }
-            set { _Person_ByName = value; }
-        }
-
-		private static string _Person_BySurname;
-        public static string Person_BySurname
-        {
-            get
-            {
-                if (_Person_BySurname is null)
-                    _Person_BySurname = GetQuery();
-
-                return _Person_BySurname;
-            }
-            set { _Person_BySurname = value; }
-        }
-
-		private static string _Person_Update;
-        public static string Person_Update
-        {
-            get
-            {
-                if (_Person_Update is null)
-                    _Person_Update = GetQuery();
-
-                return _Person_Update;
-            }
-            set { _Person_Update = value; }
         }
 
 		private static string _Shop_Add;

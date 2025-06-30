@@ -5,12 +5,12 @@ using RepairShop.Domain.Entities;
 
 namespace RepairShop.Application.MapperConfig.Profilers
 {
-    public class PersonProfiler : Profile
+    public class ClientProfiler : Profile
     {
 
-        public PersonProfiler()
+        public ClientProfiler()
         {
-            CreateMap<Person, PersonDocumentDTO>().ReverseMap();
+            CreateMap<Client, ClientDTO>().ReverseMap();
    
         }
     }

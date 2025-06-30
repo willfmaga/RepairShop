@@ -10,38 +10,29 @@ using RepairShopTest;
 namespace Application
 {
     [TestFixture]
-    public class B_PersonApplicationTest
+    public class A_ClientApplicationTest
     {
-        private IPersonService _service;
-        private IPersonRepository _repository;
-        private IPersonApplication _application;
-        private IDocumentService _documentService;
-        private PersonDocumentDTO _personDto;
-        private IDocumentRepository _repositoryDocument;
+        private IClientService _service;
+        private IClientRepository _repository;
+        private IClientApplication _application;
+        private ClientDTO _personDto;
 
         [OneTimeSetUp]
         public void Setup()
         {
             UtilForTest.TruncateTables(); 
-            _repository = new PersonRepositoryDapper(UtilForTest.connectionString);
-            _repositoryDocument = new DocumentRepositoryDapper(UtilForTest.connectionString);
+            _repository = new ClientRepositoryDapper(UtilForTest.connectionString);
 
-            _service = new PersonService(_repository);
-            _documentService = new DocumentService(_repositoryDocument);
+            _service = new ClientService(_repository);
 
-            _application = new PersonApplication(_service, _documentService);
+            _application = new ClientApplication(_service);
 
-            _personDto = new PersonDocumentDTO
+            _personDto = new ClientDTO
             {
-                TypeId = PersonType.Mechanic,
                 BirthDate = DateTime.Now.AddYears(-19),
                 Name = "William",
                 Surname = "Fernandes Magalhaes",
-                Document = new DocumentDTO
-                {
-                    Value = "73748752075",
-                    TypeId = DocumentType.CNPJ
-                }
+                Document = "73748752075"
             };
         }
 
@@ -68,7 +59,6 @@ namespace Application
         public void NotAddWhenObjectIsInvalid()
         {
             //arrange
-            _personDto.TypeId = PersonType.None;
 
             //act 
             var result = _application.Add(_personDto);
@@ -85,25 +75,6 @@ namespace Application
 
         }
 
-        //[Test]
-        //public void NotAddWhenObjectIsNull()
-        //{
-        //    //arrange
-
-
-        //    //act 
-        //    var result = _application.Add(null!);
-
-        //    var status = _application.Status;
-
-
-        //    //assert 
-        //    Assert.IsTrue(status == ApplicationStatus.Erro);
-        //    Assert.IsNull(result);
-
-
-
-        //}
 
         [Test]
         public void GetByNameWhenObjectExists()
@@ -129,13 +100,11 @@ namespace Application
             //arrange
             _application.Add(_personDto);
 
-            var personUpdateDTO = new PersonUpdateDTO
+            var personUpdateDTO = new ClientUpdateDTO
             {
-                TypeId = PersonType.Client,
                 BirthDate = DateTime.Now.AddYears(-15),
                 Name = "Gisele",
-                Surname = "Simoes",
-                DocumentValue = "73748752075"
+                Surname = "Magalhaes"
 
             };
 

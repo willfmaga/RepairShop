@@ -1,30 +1,31 @@
-﻿using RepairShop.Domain.Entities;
+﻿using RepairShop.Application.DTOs;
+using RepairShop.Domain.Entities;
 using RepairShop.Infrastructure.Repositories;
 using RepairShopTest;
 
 namespace Repositories
 {
-    public class B_PersonRepositoryDapperTest
+    public class A_ClientRepositoryDapperTest
     {
-        private PersonRepositoryDapper _repo;
+        private ClientRepositoryDapper _repo;
 
         [OneTimeSetUp]
         public void Setup()
         {
-            _repo = new PersonRepositoryDapper(UtilForTest.connectionString);
+            UtilForTest.TruncateTables(); // Ensure the database is clean before tests
+            _repo = new ClientRepositoryDapper(UtilForTest.connectionString);
         }
 
         [Test]
         public void AddWhenObjectIsValid()
         {
             //arrange
-            var person = new Person
+            var person = new Client
             {
-                TypeId = PersonType.Client,
-                Name = "William",
+                Name = "Will",
                 Surname = "Fernandes",
-                BirthDate = new DateTime(1980, 05, 08),
-                DocumentId = 1
+                BirthDate = new DateTime(1981, 05, 08),
+                Document = "73748752075"
             };
 
             //act 
@@ -41,7 +42,7 @@ namespace Repositories
         public void GetByNameWhenExists()
         {
             //arrange
-            var name = "William";
+            var name = "Will";
 
             //act 
             var result = _repo.GetByName(name);
@@ -75,7 +76,7 @@ namespace Repositories
         public void GetByBirthDateWhenExists()
         {
             //arrange
-            DateTime birthdate = new DateTime(1980, 05, 08);
+            DateTime birthdate = new DateTime(1981, 05, 08);
 
             //act 
             var result = _repo.GetByBirthDay(birthdate);
@@ -92,7 +93,7 @@ namespace Repositories
         public void GetByDocumentWhenObjectExists()
         {
             //arrange
-            var document = "18701886088";
+            var document = "73748752075";
 
             //act 
             var result = _repo.GetByDocument(document);
@@ -108,28 +109,24 @@ namespace Repositories
         public void UpdateWhenObjectExists()
         {
             //arrange 
-            var person = new Person
+            var client = new Client
             {
-                Id = 1,
-                Name = "Gisele",
+                Name = "William",
                 Surname = "Magalhaes",
                 BirthDate = new DateTime(1981, 09, 18),
-                DocumentId = 1,
-                TypeId = PersonType.Client,
-                Active = false
+                Document = "73748752075"
             };
 
             //act 
-            _repo.Update(person);
+            _repo.Update(client);
 
 
             //assert 
-            var result = _repo.GetById(person.Id);
+            var result = _repo.GetByDocument(client.Document);
 
             Assert.IsNotNull(result);
-            Assert.That(result.TypeId, Is.EqualTo(person.TypeId));
-            Assert.That(result.Name, Is.EqualTo(person.Name));
-            Assert.That(result.Surname, Is.EqualTo(person.Surname));
+            Assert.That(result.Name, Is.EqualTo(client.Name));
+            Assert.That(result.Surname, Is.EqualTo(client.Surname));
 
         }
 
@@ -148,8 +145,5 @@ namespace Repositories
             Assert.That(result.Id, Is.AtLeast(1));
 
         }
-
-
-
     }
 }

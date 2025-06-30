@@ -1,14 +1,12 @@
-INSERT INTO Person(Name, 
+INSERT INTO Client(Name, 
 			Surname, 
 			BirthDate, 
-			TypeId, 
-			DocumentId,
+			Document,
 			CreationDate)
 	VALUES (@Name, 
 			@Surname, 
 			@BirthDate, 
-			@TypeId, 
-			@DocumentId,
+			@Document,
 			@CreationDate
 			);
 

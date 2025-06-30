@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-
 using RepairShop.Application.DTOs;
 using RepairShop.Application.Interfaces;
 using RepairShop.Application.Validations;

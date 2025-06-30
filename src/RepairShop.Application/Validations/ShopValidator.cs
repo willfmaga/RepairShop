@@ -4,9 +4,9 @@ using RepairShop.Application.DTOs;
 
 namespace RepairShop.Application.Validations
 {
-    public class ClientValidator : AbstractValidator<ClientDTO>
+    public class ShopValidator : AbstractValidator<ShopDTO>
     {
-        internal ClientValidator()
+        internal ShopValidator()
         {
             Validate();
         }
@@ -15,44 +15,44 @@ namespace RepairShop.Application.Validations
         {
             RuleFor(s => s.Name)
                 .NotEmpty()
-                .WithErrorCode("1")
+                .WithErrorCode("7")
                 .WithMessage("Campo Name não pode ser null/vazio.");
 
             RuleFor(s => s.Name)
                .NotEmpty()
                .MinimumLength(3)
-               .WithErrorCode("2")
+               .WithErrorCode("8")
                .WithMessage("Campo Name deve ter no minimo 3 digitos.");
 
             RuleFor(s => s.Name)
                .MaximumLength(50)
-               .WithErrorCode("3")
+               .WithErrorCode("9")
                .WithName("Campo Name deve ter no maximo 50 digitos.");
 
-            RuleFor(s => s.Surname)
+            RuleFor(s => s.Phone)
                 .NotEmpty()
-                .WithErrorCode("4")
-                .WithName("Surname")
+                .WithErrorCode("10")
+                .WithName("Phone")
                 .MaximumLength(100)
                 .WithErrorCode("4")
                 .WithMessage("Campo Surname deve ter no maximo 100 digitos.");
 
 
-            Include(new ClientAgeValidator());
+            //Include(new ClientAgeValidator());
 
             //Document Validation
             RuleFor(s => s.Document)
                .NotEmpty()
-               .WithErrorCode("5")
+               .WithErrorCode("11")
                .WithName("Document")
-               .MaximumLength(11)
-               .WithErrorCode("6")
-               .WithName("Campo Document deve ter no maximo 11 digitos.");
+               .MaximumLength(14)
+               .WithErrorCode("4")
+               .WithName("Campo Document deve ter no maximo 14 digitos.");
         }
     }
-    public class ClientAgeValidator : AbstractValidator<ClientDTO>
+    public class ShopPhoneValidator : AbstractValidator<ClientDTO>
     {
-        public ClientAgeValidator()
+        public ShopPhoneValidator()
         {
             RuleFor(x => x.BirthDate).Must(BeOver18);
         }

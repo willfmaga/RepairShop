@@ -16,6 +16,7 @@ namespace Services
         [OneTimeSetUp]
         public void Setup()
         {
+            UtilForTest.TruncateTables(); // Ensure the database is clean before tests
             _personRepository = new ClientRepositoryDapper(UtilForTest.connectionString);
 
             _service = new ClientService(_personRepository);
@@ -27,9 +28,9 @@ namespace Services
             //arrange
             var client = new Client
             {
-                Name = "William",
+                Name = "Will",
                 Surname = "Fernandes",
-                BirthDate = new DateTime(1980, 05, 08),
+                BirthDate = new DateTime(1981, 05, 08),
                 Document = "73748752075"
             };
 
@@ -47,7 +48,7 @@ namespace Services
         public void GetByNameWhenExists()
         {
             //arrange
-            var name = "William";
+            var name = "Will";
 
             //act 
             var result = _service.GetByName(name);
@@ -81,7 +82,7 @@ namespace Services
         public void GetByBirthDateWhenExists()
         {
             //arrange
-            DateTime birthdate = new DateTime(1980, 05, 08);
+            DateTime birthdate = new DateTime(1981, 05, 08);
 
             //act 
             var result = _service.GetByBirthDay(birthdate);
@@ -117,9 +118,9 @@ namespace Services
             var person = new Client
             {
                 Id = 1,
-                Name = "Gisele",
+                Name = "William",
                 Surname = "Magalhaes",
-                BirthDate = new DateTime(1981, 09, 18),
+                BirthDate = new DateTime(1980, 05, 08),
                 Document = "73748752075",
                 Active = false
             };

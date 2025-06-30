@@ -16,18 +16,26 @@ namespace RepairShop.Application.Validations
             RuleFor(s => s.Name)
                 .NotEmpty()
                 .WithErrorCode("1")
-                .WithName("Name")
-                .MaximumLength(50)
-                .WithErrorCode("1")
-                .WithName("Campo Name deve ter no maximo 50 digitos.");
+                .WithMessage("Campo Name não pode ser null/vazio.");
+
+            RuleFor(s => s.Name)
+               .NotEmpty()
+               .MinimumLength(3)
+               .WithErrorCode("2")
+               .WithMessage("Campo Name deve ter no minimo 3 digitos.");
+
+            RuleFor(s => s.Name)
+               .MaximumLength(50)
+               .WithErrorCode("3")
+               .WithName("Campo Name deve ter no maximo 50 digitos.");
 
             RuleFor(s => s.Surname)
                 .NotEmpty()
-                .WithErrorCode("2")
+                .WithErrorCode("4")
                 .WithName("Surname")
                 .MaximumLength(100)
-                .WithErrorCode("1")
-                .WithName("Campo Surname deve ter no maximo 100 digitos.");
+                .WithErrorCode("4")
+                .WithMessage("Campo Surname deve ter no maximo 100 digitos.");
 
 
             Include(new ClientAgeValidator());
@@ -35,7 +43,7 @@ namespace RepairShop.Application.Validations
             //Document Validation
             RuleFor(s => s.Document)
                .NotEmpty()
-               .WithErrorCode("3")
+               .WithErrorCode("5")
                .WithName("Document")
                .MaximumLength(11)
                .WithErrorCode("4")

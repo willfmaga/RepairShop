@@ -30,7 +30,7 @@ namespace Application
             _personDto = new ClientDTO
             {
                 BirthDate = DateTime.Now.AddYears(-19),
-                Name = "William",
+                Name = "Will",
                 Surname = "Fernandes Magalhaes",
                 Document = "73748752075"
             };
@@ -59,7 +59,7 @@ namespace Application
         public void NotAddWhenObjectIsInvalid()
         {
             //arrange
-
+            _personDto.Name = "Wi";
             //act 
             var result = _application.Add(_personDto);
 
@@ -67,7 +67,7 @@ namespace Application
             string errors = _application.ErrorsToString();
 
             //assert 
-            Assert.IsTrue(errors.Contains("Tipo de documento nao pode ser 0 - None"));
+            Assert.IsTrue(errors.Contains("Campo Name deve ter no minimo 3 digitos."));
             Assert.IsTrue(status == ApplicationStatus.ErroNegocio);
             Assert.IsNull(result);
 

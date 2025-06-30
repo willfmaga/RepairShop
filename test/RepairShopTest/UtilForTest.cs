@@ -19,7 +19,7 @@ namespace RepairShopTest
 
             var command = string.Concat("SET FOREIGN_KEY_CHECKS = 0;",
                                         "truncate table Client;",
-                                        "",
+                                        "truncate table Shop;",
                                         "SET FOREIGN_KEY_CHECKS = 1;");
 
             using (MySqlCommand cmd = new MySqlCommand(command, connection))

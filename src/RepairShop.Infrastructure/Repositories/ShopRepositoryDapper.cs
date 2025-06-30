@@ -1,16 +1,9 @@
 ﻿using Dapper;
-using Google.Protobuf.Compiler;
 using RepairShop.Domain.Entities;
 using RepairShop.Domain.Interfaces.Repositories;
 using RepairShop.Infrastructure.Database.Queries;
-using System;
-using System.Collections.Generic;
 using System.Data;
-using System.Linq;
-using System.Reflection.Metadata;
-using System.Text;
-using System.Threading.Tasks;
-using System.Xml.Linq;
+
 
 namespace RepairShop.Infrastructure.Repositories
 {
@@ -28,7 +21,7 @@ namespace RepairShop.Infrastructure.Repositories
             param.Add("@Name", shop.Name, DbType.String, size: 100);
             param.Add("@Description", shop.Description, DbType.String, size: 500);
             param.Add("@Address", shop.Address, DbType.String, size: 500);
-            param.Add("@DocumentId", shop.DocumentId, DbType.Int16);
+            param.Add("@Document", shop.Document, DbType.String, size:14);
             param.Add("@Phone", shop.Phone, DbType.String, size:15);
             param.Add("@CreationDate", shop.CreationDate, DbType.DateTime);
 
@@ -46,15 +39,15 @@ namespace RepairShop.Infrastructure.Repositories
             return ExecuteScriptWithoutTransactionList<Shop>(script, param);
         }
 
-        public IEnumerable<Shop> GetByDocument(string documentValue)
+        public Shop GetByDocument(string document)
         {
             string script = AllQueries.Shop_ByDocument;
             var param = new DynamicParameters();
 
 
-            param.Add("@DocumentValue", documentValue, DbType.String, size: 14);
+            param.Add("@Document", document, DbType.String, size: 14);
 
-            return ExecuteScriptWithoutTransactionList<Shop>(script, param);
+            return ExecuteScriptWithoutTransactionSingle<Shop>(script, param);
         }
 
         public Shop GetById(Int64 id)
@@ -85,13 +78,13 @@ namespace RepairShop.Infrastructure.Repositories
             var param = new DynamicParameters();
 
 
-            param.Add("@Id", shop.Id, DbType.Int64);
+            param.Add("@Document", shop.Document, DbType.String, size: 14);
+           
 
             param.Add("@Name", shop.Name, DbType.String, size: 50);
             param.Add("@Description", shop.Description, DbType.String, size: 500);
             param.Add("@Address", shop.Address, DbType.String, size: 500);
             param.Add("@Phone", shop.Phone, DbType.String, size: 13);
-            param.Add("@DocumentId", shop.DocumentId, DbType.Int64);
             param.Add("@Active", shop.Active, DbType.Boolean);
 
             ExecuteScriptWithTransaction(script, param);

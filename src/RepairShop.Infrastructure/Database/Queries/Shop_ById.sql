@@ -3,7 +3,7 @@
 		   s.Description, 
 		   s.Address, 
 		   s.Phone, 
-		   s.DocumentId , 
+		   s.Document , 
 		   s.Active,
 		   s.CreationDate
 	  from Shop s

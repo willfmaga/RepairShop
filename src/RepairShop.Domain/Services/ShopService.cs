@@ -23,9 +23,9 @@ namespace RepairShop.Domain.Services
             return _repository.GetAll();
         }
 
-        public IEnumerable<Shop> GetByDocument(string documentValue)
+        public Shop GetByDocument(string document)
         {
-            return _repository.GetByDocument(documentValue);
+            return _repository.GetByDocument(document);
         }
 
         public Shop GetById(long id)

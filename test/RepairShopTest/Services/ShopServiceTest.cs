@@ -7,7 +7,7 @@ using RepairShopTest;
 
 namespace Services
 {
-    public class C_ShopServiceTest
+    public class B_ShopServiceTest
     {
         private IShopService _service;
         private IShopRepository _servicesitory;
@@ -16,6 +16,7 @@ namespace Services
         [OneTimeSetUp]
         public void Setup()
         {
+            UtilForTest.TruncateTables(); // Ensure the database is clean before tests
             _servicesitory = new ShopRepositoryDapper(UtilForTest.connectionString);
             _service = new ShopService(_servicesitory);
             _name = "William Shop";
@@ -32,7 +33,7 @@ namespace Services
                 Description = "Mechanic Repair Shop for Motocycles",
                 Address = "Rua Pedro Lessa, 1980 Embare - Santos, SP CEP 11040-020",
                 Phone = "5513988173763",
-                DocumentId = 1
+                Document = "59134485000159"
             };
 
             //act 
@@ -84,7 +85,7 @@ namespace Services
         public void GetByDocumentWhenObjectExists()
         {
             //arrange
-            var document = "18701886088";
+            var document = "59134485000159";
 
             ////act 
             var result = _service.GetByDocument(document);
@@ -92,7 +93,7 @@ namespace Services
 
             ////assert 
             Assert.IsNotNull(result);
-            Assert.That(result.First().Name, Is.EqualTo("William Shop"));
+            Assert.That(result.Name, Is.EqualTo("William Shop"));
 
         }
 
@@ -102,11 +103,10 @@ namespace Services
             //arrange 
             var shop = new Shop
             {
-                Id = 1,
                 Name = "Gisele Repair Shop for Bikes",
                 Description = "Repair Bike Shop for ladies and their bikes",
                 Address = "Pedro Lessa, 1509 Street Embare Santos - SP CEP 11040000",
-                DocumentId = 1,
+                Document = "59134485000159",
                 Phone = "5513911111122",
                 Active = false
             };
@@ -116,12 +116,15 @@ namespace Services
 
 
             //assert 
-            var result = _service.GetById(shop.Id);
+            var result = _service.GetByDocument(shop.Document);
 
             Assert.IsNotNull(result);
-            Assert.That(result.Id, Is.EqualTo(shop.Id));
+            Assert.Greater(result.Id, 0);
             Assert.That(result.Name, Is.EqualTo(shop.Name));
             Assert.That(result.Address, Is.EqualTo(shop.Address));
+            Assert.That(result.Phone, Is.EqualTo(shop.Phone));
+            Assert.That(result.Description, Is.EqualTo(shop.Description));
+            Assert.That(result.Active, Is.EqualTo(shop.Active));
 
         }
 

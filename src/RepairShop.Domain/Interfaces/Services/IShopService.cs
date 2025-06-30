@@ -8,7 +8,7 @@ namespace RepairShop.Domain.Interfaces.Services
 
         public IEnumerable<Shop> GetByName(string name);
 
-        public IEnumerable<Shop> GetByDocument(string documentValue);
+        public Shop GetByDocument(string document);
 
         public Shop Add(Shop shop);
         public Shop GetById(Int64 id);

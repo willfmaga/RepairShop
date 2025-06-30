@@ -1,2 +1,2 @@
-SELECT Name, Description, Address, Phone, DocumentId, Active , CreationDate
+SELECT Name, Description, Address, Phone, Document, Active , CreationDate
   FROM Shop 

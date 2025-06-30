@@ -4,7 +4,7 @@ using RepairShopTest;
 
 namespace Repositories
 {
-    public class C_ShopRepositoryDapperTest
+    public class B_ShopRepositoryDapperTest
     {
         private ShopRepositoryDapper _repo;
         private object _name;
@@ -12,6 +12,7 @@ namespace Repositories
         [OneTimeSetUp]
         public void Setup()
         {
+            UtilForTest.TruncateTables();
             _repo = new ShopRepositoryDapper(UtilForTest.connectionString);
             _name = "William Shop";
 
@@ -27,7 +28,7 @@ namespace Repositories
                 Description = "Mechanic Repair Shop for Motocycles",
                 Address = "Rua Pedro Lessa, 1980 Embare - Santos, SP CEP 11040-020",
                 Phone = "5513988173763",
-                DocumentId = 1
+                Document = "59134485000159"
             };
 
             //act 
@@ -79,7 +80,7 @@ namespace Repositories
         public void GetByDocumentWhenObjectExists()
         {
             //arrange
-            var document = "18701886088";
+            var document = "59134485000159";
 
             ////act 
             var result = _repo.GetByDocument(document);
@@ -87,7 +88,7 @@ namespace Repositories
 
             ////assert 
             Assert.IsNotNull(result);
-            Assert.That(result.First().Name, Is.EqualTo("William Shop"));
+            Assert.That(result.Name, Is.EqualTo("William Shop"));
 
         }
 
@@ -97,11 +98,10 @@ namespace Repositories
             //arrange 
             var shop = new Shop
             {
-                Id = 1,
                 Name = "Gisele Repair Shop for Bikes",
                 Description = "Repair Bike Shop for ladies and their bikes",
                 Address = "Pedro Lessa, 1509 Street Embare Santos - SP CEP 11040000",
-                DocumentId = 1,
+                Document = "59134485000159",
                 Phone = "5513911111122",
                 Active = false
             };
@@ -111,12 +111,15 @@ namespace Repositories
 
 
             //assert 
-            var result = _repo.GetById(shop.Id);
+            var result = _repo.GetByDocument(shop.Document);
 
             Assert.IsNotNull(result);
-            Assert.That(result.Id, Is.EqualTo(shop.Id));
+            Assert.Greater(result.Id, 0);
             Assert.That(result.Name, Is.EqualTo(shop.Name));
             Assert.That(result.Address, Is.EqualTo(shop.Address));
+            Assert.That(result.Phone, Is.EqualTo(shop.Phone));
+            Assert.That(result.Description , Is.EqualTo(shop.Description));
+            Assert.That(result.Active  , Is.EqualTo(shop.Active));
 
         }
 

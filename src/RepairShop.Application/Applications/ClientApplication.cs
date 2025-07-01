@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+
 using RepairShop.Application.DTOs;
 using RepairShop.Application.Interfaces;
 using RepairShop.Application.Validations;
@@ -39,7 +40,7 @@ namespace RepairShop.Application.Applications
         {
             var entities = _clientService.GetByBirthDay(birthdate);
 
-            return _mapper.Map<IEnumerable<ClientDTO>>(entities);  
+            return _mapper.Map<IEnumerable<ClientDTO>>(entities);
         }
 
         public ClientDTO GetByDocument(string documentValue)
@@ -78,6 +79,7 @@ namespace RepairShop.Application.Applications
 
                 if (entity is not null)
                 {
+                    entity = _mapper.Map<Client>(entityUpdate);
                     _clientService.Update(entity);
                 }
                 else

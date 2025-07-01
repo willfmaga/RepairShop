@@ -11,6 +11,7 @@ namespace RepairShop.Application.MapperConfig.Profilers
         public ClientProfiler()
         {
             CreateMap<Client, ClientDTO>().ReverseMap();
+            CreateMap<Client, ClientUpdateDTO>().ReverseMap();
    
         }
     }

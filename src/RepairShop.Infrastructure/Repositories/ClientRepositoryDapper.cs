@@ -64,7 +64,7 @@ namespace RepairShop.Infrastructure.Repositories
             var param = new DynamicParameters();
 
 
-            param.Add("@Document", document, DbType.String, size: 14);
+            param.Add("@Document", document, DbType.String, size: 11);
 
             return ExecuteScriptWithoutTransactionSingle<Client>(script, param);
         }
@@ -96,7 +96,7 @@ namespace RepairShop.Infrastructure.Repositories
             string script = AllQueries.Client_Update;
             var param = new DynamicParameters();
 
-            param.Add("@Document", client.Document, DbType.Int64);
+            param.Add("@Document", client.Document, DbType.String, size:11);
 
             param.Add("@Name", client.Name, DbType.String, size: 50);
             param.Add("@Surname", client.Surname, DbType.String, size: 100);

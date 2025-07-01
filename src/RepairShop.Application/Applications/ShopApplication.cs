@@ -1,15 +1,10 @@
 ﻿using AutoMapper;
-
 using RepairShop.Application.DTOs;
 using RepairShop.Application.Interfaces;
+using RepairShop.Application.Validations;
 using RepairShop.Domain.Entities;
 using RepairShop.Domain.Interfaces.Services;
 
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RepairShop.Application.Applications
 {
@@ -27,6 +22,12 @@ namespace RepairShop.Application.Applications
         public ShopDTO Add(ShopDTO dto)
         {
             //validation 
+            Validar(dto);
+            if (Status == ApplicationStatus.ErroNegocio)
+            {
+                ErrorMessage = ErrorsToString();
+                return null;
+            }
 
             var entity = _mapper.Map<Shop>(dto);
 
@@ -51,12 +52,28 @@ namespace RepairShop.Application.Applications
 
         public IEnumerable<ShopDTO> GetByName(string name)
         {
-            throw new NotImplementedException();
+            var entities = _shopservice.GetByName(name);
+            
+            var returnDTO = _mapper.Map<IEnumerable<ShopDTO>>(entities);
+
+            return returnDTO;
         }
 
         public void Update(ShopUpdateDTO updateDTO)
         {
             throw new NotImplementedException();
+        }
+
+        public void Validar(ShopDTO dto)
+        {
+            //Validations 
+            var validationResult = new ShopValidator().Validate(dto);
+
+            if (validationResult != null && !validationResult.IsValid)
+            {
+                Status = ApplicationStatus.ErroNegocio;
+                ValidationsFailure = validationResult?.Errors;
+            }
         }
     }
 }

@@ -1,8 +1,11 @@
-﻿using RepairShop.Domain.Entities;
+﻿using MySql.Data.MySqlClient;
+
+using RepairShop.Domain.Entities;
 using RepairShop.Domain.Interfaces.Repositories;
 using RepairShop.Domain.Interfaces.Services;
 using RepairShop.Domain.Services;
 using RepairShop.Infrastructure.Repositories;
+
 using RepairShopTest;
 
 namespace Services
@@ -144,7 +147,23 @@ namespace Services
 
         }
 
+        [Test]
+        public void ErrorAddWhenShopHasInvalidValues()
+        {
+            //arrange
+            var shop = new Shop
+            {
+                Name = "William Shop",
+                Description = "Mechanic Repair Shop for Motocycles",
+                Address = "Rua Pedro Lessa, 1980 Embare - Santos, SP CEP 11040-020",
+                Phone = "5513988173763",
+                Document = "59134485000159"
+            };
+            //act 
+            var ex = Assert.Throws<MySqlException>(() => _service.Add(shop));
+            //assert 
+            Assert.IsTrue(ex.Message.Contains("Duplicate entry"));
 
-
+        }
     }
 }

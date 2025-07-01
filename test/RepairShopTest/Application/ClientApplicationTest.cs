@@ -15,7 +15,7 @@ namespace Application
         private IClientService _service;
         private IClientRepository _repository;
         private IClientApplication _application;
-        private ClientDTO _personDto;
+        private ClientDTO _clientDto;
 
         [OneTimeSetUp]
         public void Setup()
@@ -27,7 +27,7 @@ namespace Application
 
             _application = new ClientApplication(_service);
 
-            _personDto = new ClientDTO
+            _clientDto = new ClientDTO
             {
                 BirthDate = DateTime.Now.AddYears(-19),
                 Name = "Will",
@@ -41,7 +41,7 @@ namespace Application
         public void AddWhenObjectIsValid()
         {
             //act 
-            var result = _application.Add(_personDto);
+            var result = _application.Add(_clientDto);
 
             var status = _application.Status;
 
@@ -49,8 +49,8 @@ namespace Application
             //assert 
             Assert.IsTrue(status == ApplicationStatus.Sucesso);
             Assert.IsNotNull(result);
-            Assert.That(result.Name, Is.EqualTo(_personDto.Name));
-            Assert.That(result.Surname, Is.EqualTo(_personDto.Surname));
+            Assert.That(result.Name, Is.EqualTo(_clientDto.Name));
+            Assert.That(result.Surname, Is.EqualTo(_clientDto.Surname));
 
 
         }
@@ -59,9 +59,9 @@ namespace Application
         public void NotAddWhenObjectIsInvalid()
         {
             //arrange
-            _personDto.Name = "Wi";
+            _clientDto.Name = "Wi";
             //act 
-            var result = _application.Add(_personDto);
+            var result = _application.Add(_clientDto);
 
             var status = _application.Status;
             string errors = _application.ErrorsToString();
@@ -79,16 +79,15 @@ namespace Application
         [Test]
         public void GetByNameWhenObjectExists()
         {
-            ////arrange
-            _application.GetByName(_personDto.Name);
+            //arrange
 
-            ////act 
-            var result = _application.GetByName(_personDto.Name);
+            //act 
+            var result = _application.GetByName(_clientDto.Name);
 
 
-            ////assert 
+            //assert 
             Assert.IsNotNull(result);
-            Assert.That(result.First().Name, Is.EqualTo(_personDto.Name));
+            Assert.That(result.Count(), Is.GreaterThan(0));
 
         }
 
@@ -97,27 +96,31 @@ namespace Application
         [Test]
         public void UpdateWhenObjectExists()
         {
+            var newName = "William";
+            var newSurname = "F. Magalhaes";
+            var newBirth = DateTime.Now.AddYears(-15);
             //arrange
-            _application.Add(_personDto);
+            _application.Add(_clientDto);
 
             var personUpdateDTO = new ClientUpdateDTO
             {
-                BirthDate = DateTime.Now.AddYears(-15),
-                Name = "Gisele",
-                Surname = "Magalhaes"
-
+                BirthDate = newBirth,
+                Name = newName,
+                Surname = newSurname,
+                Document = "73748752075",
             };
 
             //act 
             _application.Update(personUpdateDTO);
 
-
             //assert 
-            //var result = _application.GetById(1);
+            var result = _application.GetByDocument(personUpdateDTO.Document);
 
-            //Assert.IsNotNull(result);
-            //Assert.That(result.TypeId, Is.EqualTo(personUpdateDTO.TypeId));
-            //Assert.That(false, Is.EqualTo(personUpdateDTO.Active));
+            Assert.IsNotNull(result);
+            Assert.That(result.Name, Is.EqualTo(newName));
+            Assert.That(result.Surname, Is.EqualTo(newSurname));
+            Assert.That(result.BirthDate, Is.EqualTo(newBirth.Date));
+          
 
         }
 

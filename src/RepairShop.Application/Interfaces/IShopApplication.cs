@@ -4,7 +4,7 @@ using RepairShop.Domain.Entities;
 
 namespace RepairShop.Application.Interfaces
 {
-    public interface IShopApplication
+    public interface IShopApplication : IBase
     {
         public IEnumerable<ShopDTO> GetAll();
 
